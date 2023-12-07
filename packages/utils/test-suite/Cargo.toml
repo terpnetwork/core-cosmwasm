@@ -34,30 +34,30 @@ optimize = """docker run --rm -v "$(pwd)":/code \
 """
 
 [dependencies]
-cosmwasm-schema     = { workspace = true }
+cosmwasm-schema       = { workspace = true }
 terp-sdk              = { workspace = true }
-cosmwasm-std        = { workspace = true }
-cw4                 = { workspace = true }
-cw-multi-test       = { workspace = true }
+cosmwasm-std          = { workspace = true }
+cw4                   = { workspace = true }
+cw-multi-test         = { workspace = true }
 terp-multi-test       = { workspace = true }
 terp721-base          = { workspace = true }
 terp721-updatable     = { workspace = true }
-cw4-group           = { workspace = true }
+cw4-group             = { workspace = true }
 terp-splits           = { workspace = true }
-anyhow              = "1.0.57"
-earlybird-immutable = { workspace = true, features = ["library"] }
-cw721               = { workspace = true }
-cw721-base          = { workspace = true, features = ["library"] }
-factory-utils                 = { workspace = true }
+anyhow                = "1.0.57"
+earlybird-immutable   = { workspace = true, features = ["library"] }
+cw721                 = { workspace = true }
+cw721-base            = { workspace = true, features = ["library"] }
+factory-utils         = { workspace = true }
 terp721               = { workspace = true }
-terp-metadata              = { workspace = true }
-open-edition-factory     = { workspace = true, features = ["library"] }
-open-edition-minter      = { workspace = true, features = ["library"] }
-earlybird        = { workspace = true, features = ["library"] }
-vending-factory     = { workspace = true, features = ["library"] }
-vending-minter      = { workspace = true, features = ["library"] }
-base-factory        = { workspace = true }
-base-minter         = { workspace = true }
+terp-metadata         = { workspace = true }
+open-edition-factory  = { workspace = true, features = ["library"] }
+open-edition-minter   = { workspace = true, features = ["library"] }
+earlybird             = { workspace = true, features = ["library"] }
+vending-factory       = { workspace = true, features = ["library"] }
+vending-minter        = { workspace = true, features = ["library"] }
+base-factory          = { workspace = true }
+base-minter           = { workspace = true }
 terp721-nt            = { workspace = true }
 terp-code-controllers      = { workspace = true }
 cw-ownable = "0.5.1"
