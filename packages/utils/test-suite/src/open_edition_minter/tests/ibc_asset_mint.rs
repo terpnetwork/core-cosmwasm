@@ -159,7 +159,7 @@ fn one_hundred_percent_burned_ibc_minter() {
     let balance = router.wrap().query_balance(creator, denom).unwrap();
     assert_eq!(balance.amount, Uint128::zero());
     // confirm mint_price 50% sent to community pool, 50% sent to dev
-    // "community_pool" address from packages/sg-multi-test/src/multi.rs
+    // "community_pool" address from packages/terp-multi-test/src/multi.rs
     let balance = router
         .wrap()
         .query_balance(Addr::unchecked(FOUNDATION), denom)

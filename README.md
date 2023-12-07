@@ -8,4 +8,4 @@ This repository contains the core contracts and libraries that are shared among 
 | [Terp Standard Development Kit](./packages/terp-sdk/README.md)    | Common Terp Network libraries for interfacing with CosmWasm smart contracts.                         |
 
 
-Heavily modified fork of Terp [core]() & [launchpad contract](). Massive respect to its contributors. 
+Heavily modified fork of Stargaze [core](https://github.com/public-awesome/core) & [launchpad contract](https://github.com/public-awesome/launchpad). Massive respect to its contributors. 

@@ -230,7 +230,7 @@ mod tests {
         let version = query_contract_info(&app.wrap(), splits_addr.clone()).unwrap();
         assert_eq!(
             ContractVersion {
-                contract: "crates.io:sg-splits".to_string(),
+                contract: "crates.io:terp-splits".to_string(),
                 version: env!("CARGO_PKG_VERSION").to_string(),
             },
             version,

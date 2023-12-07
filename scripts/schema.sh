@@ -49,7 +49,7 @@ for d in contracts/revenue/residual-registry/*; do
   fi
 done
 
-# cd contracts/sg-eth-airdrop && cargo schema && rm -rf schema/raw && cd ../..
+# cd contracts/terp-eth-airdrop && cargo schema && rm -rf schema/raw && cd ../..
 # cd contracts/splits && cargo schema && rm -rf schema/raw && cd ../..
 
 # cd ts && yarn install && yarn codegen

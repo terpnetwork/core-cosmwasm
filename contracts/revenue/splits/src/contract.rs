@@ -14,7 +14,7 @@ use crate::msg::{ExecuteMsg, Group, InstantiateMsg, QueryMsg};
 use crate::state::{ADMIN, GROUP};
 
 // Version info for migration info
-pub const CONTRACT_NAME: &str = "crates.io:sg-splits";
+pub const CONTRACT_NAME: &str = "crates.io:terp-splits";
 pub const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
 
 const INIT_GROUP_REPLY_ID: u64 = 1;

@@ -46,7 +46,7 @@ pub struct TokenPositionMapping {
 }
 
 // version info for migration info
-const CONTRACT_NAME: &str = "crates.io:sg-vending-minter-flex";
+const CONTRACT_NAME: &str = "crates.io:terp-vending-minter-flex";
 const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
 
 const INSTANTIATE_TERP721_REPLY_ID: u64 = 1;
