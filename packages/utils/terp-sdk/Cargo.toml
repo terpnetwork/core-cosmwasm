@@ -1,0 +1,25 @@
+[package]
+name        = "terp-sdk"
+authors     = ["Jorge Hernandez <jorge@publicawesome.com>",
+                "A Hardnett <returniflost@skiff.com>"]
+description = "Bindings for CosmWasm contracts to call into custom modules of Terp"
+version     = "0.1.0"
+edition     = { workspace = true }
+homepage    = { workspace = true }
+repository  = { workspace = true }
+license     = { workspace = true }
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+# for more explicit tests, cargo test --features=backtraces
+backtraces = ["cosmwasm-std/backtraces"]
+# use library feature to disable all instantiate/execute/query exports
+library = []
+
+[dependencies]
+cosmwasm-schema = { workspace = true }
+cosmwasm-std    = { workspace = true }
+schemars        = { workspace = true }
+serde           = { workspace = true }
+thiserror       = { workspace = true }

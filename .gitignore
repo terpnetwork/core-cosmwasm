@@ -1,0 +1,33 @@
+# Build results
+/target
+/schema
+/artifacts
+
+# Test results
+/test/e2e/gas_reports/*
+
+# Cargo+Git helper file (https://github.com/rust-lang/cargo/blob/0.44.1/src/cargo/sources/git/utils.rs#L320-L327)
+.cargo-ok
+
+# Text file backups
+**/*.rs.bk
+
+# macOS
+.DS_Store
+
+# IDEs
+*.iml
+.idea
+
+# Typescript
+*-debug.log
+*-error.log
+/.nyc_output
+/package-lock.json
+lib
+dist
+tmp
+node_modules
+oclif.manifest.json
+lerna-debug.log
+tsconfig.tsbuildinfo

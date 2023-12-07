@@ -1,0 +1,19 @@
+[package]
+name        = "terp-multi-test"
+authors     = ["Jorge Hernandez <jorge@publicawesome.com>",
+                "A Hardnett <returniflost@skiff.com>"
+]
+description = "Integration test helpers for Terp custom contracts"
+version     = "0.1.0"
+edition     = { workspace = true }
+homepage    = { workspace = true }
+repository  = { workspace = true }
+license     = { workspace = true }
+
+[dependencies]
+anyhow        = { workspace = true }
+cosmwasm-std  = { workspace = true }
+cw-multi-test = { workspace = true }
+schemars      = { workspace = true }
+serde         = { workspace = true }
+terp-sdk        = { workspace = true }

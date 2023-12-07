@@ -1,0 +1,165 @@
+[workspace]
+members  = [
+    "contracts/nft/collections/*",
+    "contracts/revenue/*",
+    "e2e",
+    "packages/actions/*",
+    "packages/nft/*",
+    "packages/revenue/*",
+    "packages/utils/*"
+    ]
+
+resolver = "2"
+
+[workspace.package]
+version    = "0.1.0"
+edition    = "2021"
+homepage   = "https://terp.network"
+repository = "https://github.com/terpnetwork/core-cosmwasm"
+license    = "Apache-2.0"
+
+[workspace.dependencies]
+terp-fair-burn = { path = "contracts/revenue/fair-burn", features = ["library"] }
+terp-residual-registry = { path = "contracts/revenue/residual-registry", features = [
+    "library",
+] }
+
+terp721                    = { version = "0.1.0", path = "packages/nft/terp721", features = ["library"] }
+terp721-base               = { version = "0.1.0", path = "contracts/nft/collections/terp721-base", features = ["library"] }
+terp721-nt                 = { version = "0.1.0", path = "contracts/nft/collections/terp721-nt" }
+terp-splits                 = { version = "0.1.0", path = "contracts/revenue/splits" }
+terp721-updatable          = { version = "0.1.0", path = "contracts/nft/collections/terp721-updatable" }
+base-factory               = { version = "0.1.0", path = "contracts/nft/factories/base-factory" }
+vending-factory            = { version = "0.1.0", path = "contracts/nft/factories/vending-factory", features = ["library"] }
+open-edition-factory       = { version = "0.1.0", path = "contracts/nft/factories/open-edition-factory", features = ["library"] }
+base-minter                = { version = "0.1.0", path = "contracts/nft/minters/base-minter" }
+vending-minter             = { version = "0.1.0", path = "contracts/nft/minters/vending-minter" }
+open-edition-minter        = { version = "0.1.0", path = "contracts/nft/minters/open-edition-minter" }
+earlybird-immutable        = { version = "0.1.0", path = "contracts/nft/earlybirds/earlybird-immutable" }
+earlybird-flex             = { version = "0.1.0", path = "contracts/nft/earlybirds/earlybird-flex" }
+earlybird                  = { version = "0.1.0", path = "contracts/nft/earlybirds/earlybird" }
+ethereum-verify            = { version = "0.1.0", path = "packages/actions/ethereum-verify" }
+terp-code-controllers      = { version = "0.1.0", path = "packages/actions/controllers" }
+terp-metadata              = { version = "0.1.0", path = "packages/nft/terp-metadata" }
+terp-mint-hooks            = { version = "0.1.0", path = "packages/actions/mint-hooks" }
+terp-index-query           = { version = "0.1.0", path = "packages/actions/terp-index-query" }
+factory-utils              = { version = "0.1.0", path = "packages/nft/factory-utils" }
+minter-utils               = { version = "0.1.0", path = "packages/nft/minter-utils" }
+terp-sdk                   = { version = "0.1.0", path = "packages/utils/terp-sdk" }
+terp-fee                   = { version = "0.1.0", path = "packages/revenue/terp-fee" }
+
+
+cosmwasm-schema  = "1.3.1"
+cosmwasm-std     = "1.3.1"
+cosmwasm-storage = "1.3.1"
+cw-storage-macro = "1.1.0"
+cw-storage-plus  = "1.1.0"
+cw-controllers   = "1.1.0"
+cw2              = "1.1.0"
+cw4              = "1.1.0"
+cw4-group        = "1.1.0"
+cw721            = "0.18.0"
+cw721-base       = "0.18.0"
+cw-utils         = "1.0.1"
+schemars         = "0.8.11"
+semver           = "1.0.16"
+serde            = { version = "1.0.145", default-features = false, features = ["derive"] }
+sha2             = { version = "0.10.2", default-features = false }
+thiserror        = "1.0.31"
+anyhow           = "1.0.41"
+
+# dev-dependencies
+cw-multi-test    = "0.16.5"
+terp-multi-test       = { version = "0.1.0", path = "packages/utils/terp-multi-test" }
+assert_matches   = "1.5"
+serde_json       = "1.0"
+env_logger       = "0.9.0"
+test-context     = "0.1.4"
+once_cell        = "1.13.0"
+rand             = "0.8"
+itertools        = "0.10.5"
+mockall          = "0.11.4"
+test-suite          = { version = "0.1.0", path = "packages/utils/test-suite" }
+cw-ownable       = "0.5.1"
+url              = "2.2.2"
+
+[profile.release.package.terp721]
+codegen-units = 1
+incremental   = false
+
+[profile.release.package.terp-fee]
+codegen-units = 1
+incremental   = false
+
+[profile.release.package.factory-utils]
+codegen-units = 1
+incremental   = false
+
+[profile.release.package.minter-utils]
+codegen-units = 1
+incremental   = false
+
+[profile.release.package.terp721-base]
+codegen-units = 1
+incremental   = false
+
+[profile.release.package.terp721-nt]
+codegen-units = 1
+incremental   = false
+
+[profile.release.package.terp721-updatable]
+codegen-units = 1
+incremental   = false
+
+[profile.release.package.earlybird]
+codegen-units = 1
+incremental   = false
+
+[profile.release.package.base-factory]
+codegen-units = 1
+incremental   = false
+
+[profile.release.package.base-minter]
+codegen-units = 1
+incremental   = false
+
+[profile.release.package.terp-eth-airdrop]
+codegen-units = 1
+incremental   = false
+
+[profile.release.package.vending-factory]
+codegen-units = 1
+incremental   = false
+
+[profile.release.package.vending-minter]
+codegen-units = 1
+incremental   = false
+
+[profile.release.package.terp-splits]
+codegen-units = 1
+incremental   = false
+
+[profile.release.package.earlybird-immutable]
+codegen-units = 1
+incremental   = false
+
+[profile.release.package.earlybird-flex]
+codegen-units = 1
+incremental   = false
+
+[profile.release.package.ethereum-verify]
+codegen-units = 1
+incremental   = false
+
+[profile.release.package.test-suite]
+codegen-units = 1
+incremental   = false
+
+
+[profile.release]
+rpath            = false
+lto              = true
+overflow-checks  = true
+opt-level        = 3
+debug            = false
+debug-assertions = false

@@ -1,0 +1,83 @@
+[package]
+name        = "test-suite"
+authors     = ["Michael Scotto <m@publicawesome.com>",
+"A Hardnett <returniflost@skiff.com>"]
+description = "Terp Test Suite for Launchpad"
+version     = { workspace = true }
+edition     = { workspace = true }
+homepage    = { workspace = true }
+repository  = { workspace = true }
+license     = { workspace = true }
+
+exclude = [
+    # Those files are rust-optimizer artifacts. You might want to commit them for convenience but they should not be part of the source code publication.
+    "contract.wasm",
+    "hash.txt",
+]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+# for more explicit tests, cargo test --features=backtraces
+backtraces = ["cosmwasm-std/backtraces"]
+# use library feature to disable all instantiate/execute/query exports
+library = []
+
+[package.metadata.scripts]
+optimize = """docker run --rm -v "$(pwd)":/code \
+  --mount type=volume,source="$(basename "$(pwd)")_cache",target=/code/target \
+  --mount type=volume,source=registry_cache,target=/usr/local/cargo/registry \
+  cosmwasm/rust-optimizer:0.12.9
+"""
+
+[dependencies]
+cosmwasm-schema     = { workspace = true }
+terp-sdk              = { workspace = true }
+cosmwasm-std        = { workspace = true }
+cw4                 = { workspace = true }
+cw-multi-test       = { workspace = true }
+terp-multi-test       = { workspace = true }
+terp721-base          = { workspace = true }
+terp721-updatable     = { workspace = true }
+cw4-group           = { workspace = true }
+terp-splits           = { workspace = true }
+anyhow              = "1.0.57"
+earlybird-immutable = { workspace = true, features = ["library"] }
+cw721               = { workspace = true }
+cw721-base          = { workspace = true, features = ["library"] }
+factory-utils                 = { workspace = true }
+terp721               = { workspace = true }
+terp-metadata              = { workspace = true }
+open-edition-factory     = { workspace = true, features = ["library"] }
+open-edition-minter      = { workspace = true, features = ["library"] }
+earlybird        = { workspace = true, features = ["library"] }
+vending-factory     = { workspace = true, features = ["library"] }
+vending-minter      = { workspace = true, features = ["library"] }
+base-factory        = { workspace = true }
+base-minter         = { workspace = true }
+terp721-nt            = { workspace = true }
+terp-code-controllers      = { workspace = true }
+cw-ownable = "0.5.1"
+
+[dev-dependencies]
+serde           = { workspace = true }
+thiserror       = { workspace = true }
+async-std       = "1.12.0"
+ethers-signers  = "1.0.0"
+ethers-core     = "1.0.0"
+eyre            = "0.6"
+rlp             = "0.5"
+cw2             = { workspace = true }
+cw-storage-plus = { workspace = true }
+cw-utils        = { workspace = true }
+rand_core       = { version = "0.6.4", default-features = false }
+rand_xoshiro    = { version = "0.6.0", default-features = false }
+schemars        = { workspace = true }
+sha2            = { workspace = true }
+shuffle         = { git = "https://github.com/webmaster128/shuffle", branch = "rm-getrandom", version = "0.1.7" }
+terp-fee             = { workspace = true }
+minter-utils             = { workspace = true }
+url             = { workspace = true }

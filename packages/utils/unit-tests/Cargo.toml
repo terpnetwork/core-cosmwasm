@@ -1,0 +1,28 @@
+[package]
+name       = "unit-tests"
+version    = { workspace = true }
+edition    = { workspace = true }
+repository = { workspace = true }
+license    = { workspace = true }
+
+[dependencies]
+terp-residual-registry = { workspace = true }
+cosmwasm-std              = { workspace = true }
+cosmwasm-schema           = { workspace = true }
+cw-storage-plus           = { workspace = true }
+cw-utils                  = { workspace = true }
+cw2                       = { workspace = true }
+factory-utils                       = { workspace = true }
+thiserror                 = { workspace = true }
+anyhow                    = { workspace = true }
+terp721-base                = { workspace = true }
+terp721                     = { workspace = true }
+terp-sdk                    = { workspace = true }
+
+[dev-dependencies]
+itertools       = { workspace = true }
+cw-multi-test   = { workspace = true }
+terp-multi-test   = { workspace = true }
+test-suite      = { workspace = true }
+vending-minter  = { workspace = true }
+vending-factory = { workspace = true }

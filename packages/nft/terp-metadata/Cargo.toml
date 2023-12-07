@@ -1,0 +1,28 @@
+[package]
+name        = "terp-metadata"
+authors     = [
+  "Shane Vitarana <s@noreply.publicawsome.com>",
+  "Larry Engineer <gm@larry.engineer>",
+]
+description = "Rust definition of the OpenSea metadata standard, used by Terp marketplace"
+version     = { workspace = true }
+edition     = { workspace = true }
+homepage    = { workspace = true }
+repository  = { workspace = true }
+license     = { workspace = true }
+
+exclude = [
+  # Those files are rust-optimizer artifacts. You might want to commit them for convenience but they should not be part of the source code publication.
+  "contract.wasm",
+  "hash.txt",
+]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+cosmwasm-schema = { workspace = true }
+schemars        = { workspace = true }
+serde           = { workspace = true }

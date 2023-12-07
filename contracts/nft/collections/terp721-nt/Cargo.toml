@@ -1,0 +1,43 @@
+[package]
+name = "terp721-nt"
+authors = [
+  "Shane Vitarana <s@noreply.publicawesome.com>",
+  "John Y <j@noreply.publicawesome.com>",
+     "A Hardnett <returniflost@skiff.com>",
+]
+description = "Terp Non-transferrable NFT collection contract"
+version = { workspace = true }
+edition = { workspace = true }
+homepage = { workspace = true }
+repository = { workspace = true }
+license = { workspace = true }
+
+exclude = [
+  # Those files are rust-optimizer artifacts. You might want to commit them for convenience but they should not be part of the source code publication.
+  "contract.wasm",
+  "hash.txt",
+]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+# for more explicit tests, cargo test --features=backtraces
+backtraces = ["cosmwasm-std/backtraces"]
+# use library feature to disable all instantiate/execute/query exports
+library = []
+
+[dependencies]
+cosmwasm-schema = { workspace = true }
+cosmwasm-std    = { workspace = true }
+cw2             = { workspace = true }
+cw721           = { workspace = true }
+cw721-base      = { workspace = true, features = ["library"] }
+cw-utils        = { workspace = true }
+schemars        = { workspace = true }
+serde           = { workspace = true }
+terp721           = { workspace = true }
+terp721-base      = { workspace = true, features = ["library"] }
+terp-sdk          = { workspace = true }

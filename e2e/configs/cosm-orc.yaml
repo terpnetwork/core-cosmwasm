@@ -1,0 +1,8 @@
+chain_cfg: 
+  denom: "uterp"
+  prefix: "terp"
+  chain_id: "testing"
+  grpc_endpoint: "http://localhost:9090/"
+  gas_prices: 0.1
+  gas_adjustment: 1.5
+  fees: "5000uthiol"

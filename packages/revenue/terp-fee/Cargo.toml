@@ -1,0 +1,16 @@
+[package]
+name        = "terp-fee"
+authors     = ["A hardnett"]
+description = "Definition and types for the SG1 interface"
+version     = { workspace = true }
+edition     = { workspace = true }
+homepage    = { workspace = true }
+repository  = { workspace = true }
+license     = { workspace = true }
+
+[dependencies]
+cosmwasm-std    = { workspace = true }
+cw-utils        = { workspace = true }
+serde           = { workspace = true }
+terp-sdk       = { path = "../../utils/terp-sdk" }
+thiserror       = { workspace = true }

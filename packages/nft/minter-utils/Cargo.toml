@@ -1,0 +1,16 @@
+[package]
+name        = "minter-utils"
+authors     = ["Shane Vitarana <s@noreply.publicawesome.com>"]
+description = "Definition and types for the SG4 interface"
+version     = { workspace = true }
+edition     = { workspace = true }
+homepage    = { workspace = true }
+repository  = { workspace = true }
+license     = { workspace = true }
+
+[dependencies]
+cosmwasm-schema = { workspace = true }
+cosmwasm-std    = { workspace = true }
+schemars        = { workspace = true }
+serde           = { workspace = true }
+thiserror       = { workspace = true }
