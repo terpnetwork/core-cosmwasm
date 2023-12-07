@@ -1,5 +1,5 @@
 {
-  "contract_name": "vending-minter-wl-flex",
+  "contract_name": "vending-minter-eb-flex",
   "contract_version": "3.3.0",
   "idl_version": "1.0.0",
   "instantiate": {

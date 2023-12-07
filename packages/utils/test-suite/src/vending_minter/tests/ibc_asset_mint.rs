@@ -105,7 +105,7 @@ fn denom_mismatch_creating_minter() {
 
 #[test]
 fn wl_denom_mismatch() {
-    // create factory and minter w NATIVE_DENOM, then try setting wl w different denom
+    // create factory and minter w NATIVE_DENOM, then try setting eb w different denom
     let num_tokens = 7000;
     let denom = "ibc/asset";
     let vt = vending_minter_template(num_tokens);
@@ -134,7 +134,7 @@ fn wl_denom_mismatch() {
 
 #[test]
 fn wl_denom_mint() {
-    // create factory, minter, wl w custom denom, then try mint
+    // create factory, minter, eb w custom denom, then try mint
     let denom = "ibc/asset";
     let mut app = custom_mock_app();
     let (creator, buyer) = setup_accounts(&mut app);

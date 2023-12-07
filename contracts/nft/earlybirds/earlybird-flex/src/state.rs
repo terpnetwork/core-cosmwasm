@@ -34,4 +34,4 @@ pub const ADMIN_LIST: Item<AdminList> = Item::new("admin_list");
 pub const CONFIG: Item<Config> = Item::new("config");
 
 // address <> mint_count
-pub const WHITELIST: Map<Addr, u32> = Map::new("wl");
+pub const EARLYBIRD: Map<Addr, u32> = Map::new("eb");

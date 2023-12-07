@@ -50,7 +50,7 @@ mod tests {
             Addr::unchecked(CREATOR),
             &msg,
             &[],
-            "wl-contract".to_string(),
+            "eb-contract".to_string(),
             None,
         )
         .unwrap()
@@ -150,7 +150,7 @@ mod tests {
                 Addr::unchecked(CREATOR),
                 &msg,
                 &[],
-                "wl-contract".to_string(),
+                "eb-contract".to_string(),
                 None,
             )
             .unwrap_err();

@@ -8,7 +8,7 @@ use crate::msg::{
     HasStartedResponse, InstantiateMsg, IsActiveResponse, Member, MembersResponse, QueryMsg,
     RemoveMembersMsg,
 };
-use crate::state::{AdminList, Config, ADMIN_LIST, CONFIG, WHITELIST};
+use crate::state::{AdminList, Config, ADMIN_LIST, CONFIG, EARLYBIRD};
 #[cfg(not(feature = "library"))]
 use cosmwasm_std::entry_point;
 use cosmwasm_std::{ensure, to_binary, Binary, Deps, DepsMut, Env, MessageInfo, StdResult};
@@ -126,7 +126,7 @@ pub fn instantiate(
                 return Err(ContractError::ExceededWhaleCap {});
             }
         }
-        WHITELIST.save(deps.storage, addr, &member.mint_count)?;
+        EARLYBIRD.save(deps.storage, addr, &member.mint_count)?;
     }
 
     Ok(res
@@ -233,10 +233,10 @@ pub fn execute_add_members(
             });
         }
         let addr = deps.api.addr_validate(&add.address)?;
-        if WHITELIST.has(deps.storage, addr.clone()) {
+        if EARLYBIRD.has(deps.storage, addr.clone()) {
             return Err(ContractError::DuplicateMember(addr.to_string()));
         }
-        WHITELIST.save(deps.storage, addr, &add.mint_count)?;
+        EARLYBIRD.save(deps.storage, addr, &add.mint_count)?;
         config.num_members += 1;
     }
 
@@ -262,10 +262,10 @@ pub fn execute_remove_members(
 
     for remove in msg.to_remove.into_iter() {
         let addr = deps.api.addr_validate(&remove)?;
-        if !WHITELIST.has(deps.storage, addr.clone()) {
+        if !EARLYBIRD.has(deps.storage, addr.clone()) {
             return Err(ContractError::NoMemberFound(addr.to_string()));
         }
-        WHITELIST.remove(deps.storage, addr);
+        EARLYBIRD.remove(deps.storage, addr);
         config.num_members -= 1;
     }
 
@@ -368,7 +368,7 @@ pub fn query_members(
         .min(PAGINATION_MAX_LIMIT) as usize;
     let start_addr = maybe_addr(deps.api, start_after)?;
     let start = start_addr.map(Bound::exclusive);
-    let members = WHITELIST
+    let members = EARLYBIRD
         .range(deps.storage, start, None, Order::Ascending)
         .take(limit)
         .map(|res| {
@@ -387,13 +387,13 @@ pub fn query_has_member(deps: Deps, member: String) -> StdResult<HasMemberRespon
     let addr = deps.api.addr_validate(&member)?;
 
     Ok(HasMemberResponse {
-        has_member: WHITELIST.has(deps.storage, addr),
+        has_member: EARLYBIRD.has(deps.storage, addr),
     })
 }
 
 pub fn query_member(deps: Deps, member: String) -> StdResult<Member> {
     let addr = deps.api.addr_validate(&member)?;
-    let mint_count = WHITELIST.load(deps.storage, addr.clone())?;
+    let mint_count = EARLYBIRD.load(deps.storage, addr.clone())?;
     Ok(Member {
         address: addr.into_string(),
         mint_count,

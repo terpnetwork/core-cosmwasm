@@ -116,11 +116,11 @@ pub fn instantiate(
         .earlybird
         .and_then(|w| deps.api.addr_validate(w.as_str()).ok());
 
-    if let Some(wl) = earlybird_addr.clone() {
+    if let Some(eb) = earlybird_addr.clone() {
         // check the earlybird exists
         let res: EarlybirdConfigResponse = deps
             .querier
-            .query_wasm_smart(wl, &EarlybirdQueryMsg::Config {})?;
+            .query_wasm_smart(eb, &EarlybirdQueryMsg::Config {})?;
         if res.is_active {
             return Err(ContractError::EarlybirdAlreadyStarted {});
         }
@@ -413,10 +413,10 @@ pub fn execute_set_earlybird(
         ContractError::AlreadyStarted {}
     );
 
-    if let Some(wl) = existing_earlybird {
+    if let Some(eb) = existing_earlybird {
         let res: EarlybirdConfigResponse = deps
             .querier
-            .query_wasm_smart(wl, &EarlybirdQueryMsg::Config {})?;
+            .query_wasm_smart(eb, &EarlybirdQueryMsg::Config {})?;
 
         ensure!(!res.is_active, ContractError::EarlybirdAlreadyStarted {});
     }
@@ -532,7 +532,7 @@ fn is_public_mint(deps: Deps, info: &MessageInfo) -> Result<bool, ContractError>
         });
     }
 
-    // Check wl per address limit
+    // Check eb per address limit
     let mint_count = mint_count(deps, info)?;
     if mint_count >= wl_config.per_address_limit {
         return Err(ContractError::MaxPerAddressLimitExceeded {});

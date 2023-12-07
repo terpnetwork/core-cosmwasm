@@ -1,4 +1,4 @@
-# SG Controllers: Common controllers for many contracts
+# Terp Code Controllers: Common controllers for many contracts
 
 This is a collection of "controllers" that we end up reimplementing in
 many contracts. I use the word "controller" similar to the MVC framework

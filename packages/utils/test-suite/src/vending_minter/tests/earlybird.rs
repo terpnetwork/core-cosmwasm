@@ -85,7 +85,7 @@ fn set_invalid_earlybird() {
         .execute_contract(creator.clone(), minter_addr.clone(), &msg, &[])
         .unwrap();
 
-    // update wl times
+    // update eb times
     const WL_START: Timestamp = Timestamp::from_nanos(GENESIS_MINT_START_TIME + 200);
 
     let wl_msg = EarlybirdExecuteMsg::UpdateStartTime(WL_START);
@@ -112,7 +112,7 @@ fn set_invalid_earlybird() {
         "Generic error: Querier contract error: cw_multi_test::wasm::ContractData not found"
     );
 
-    // move time to make wl start
+    // move time to make eb start
     setup_block_time(&mut router, GENESIS_MINT_START_TIME + 201, Some(11));
 
     // check that the new earlybird exists
@@ -239,7 +239,7 @@ fn earlybird_mint_count_query() {
         ContractError::MaxPerAddressLimitExceeded {}.to_string()
     );
 
-    // Set time after wl ends
+    // Set time after eb ends
     setup_block_time(&mut router, GENESIS_MINT_START_TIME + 20_000, Some(11));
 
     // Public mint succeeds

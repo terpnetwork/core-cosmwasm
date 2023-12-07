@@ -1,4 +1,4 @@
-use crate::state::{Config, CONFIG, TOTAL_ADDRESS_COUNT, WHITELIST};
+use crate::state::{Config, CONFIG, TOTAL_ADDRESS_COUNT, EARLYBIRD};
 #[cfg(not(feature = "library"))]
 use cosmwasm_std::entry_point;
 use cosmwasm_std::{to_json_binary, Binary, Deps, DepsMut, Env, MessageInfo, StdResult};
@@ -44,7 +44,7 @@ pub fn instantiate(
 fn update_earlybird(deps: &mut DepsMut, msg: InstantiateMsg) -> Result<u64, ContractError> {
     let mut count = 0u64;
     for address in msg.addresses.into_iter() {
-        WHITELIST.save(deps.storage, &address, &true)?;
+        EARLYBIRD.save(deps.storage, &address, &true)?;
         count += 1;
     }
     Ok(count)
@@ -84,7 +84,7 @@ pub fn query_config(deps: Deps) -> StdResult<ConfigResponse> {
 }
 
 pub fn query_includes_address(deps: Deps, address: String) -> StdResult<bool> {
-    Ok(WHITELIST.has(deps.storage, &address))
+    Ok(EARLYBIRD.has(deps.storage, &address))
 }
 
 pub fn query_admin(deps: Deps) -> StdResult<String> {

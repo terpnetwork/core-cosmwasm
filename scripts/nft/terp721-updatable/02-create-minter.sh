@@ -10,7 +10,7 @@ TERP721_CODE_ID=
 #     pub num_tokens: u32,
 #     pub mint_price: Coin,
 #     pub per_address_limit: u32,
-#     pub whitelist: Option<String>,
+#     pub earlybird: Option<String>,
 # }
 # collection params
 # CollectionParams {

@@ -32,4 +32,4 @@ impl AdminList {
 pub const ADMIN_LIST: Item<AdminList> = Item::new("admin_list");
 
 pub const CONFIG: Item<Config> = Item::new("config");
-pub const WHITELIST: Map<Addr, bool> = Map::new("wl");
+pub const EARLYBIRD: Map<Addr, bool> = Map::new("eb");

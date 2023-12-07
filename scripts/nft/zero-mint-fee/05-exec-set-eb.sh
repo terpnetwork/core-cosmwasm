@@ -1,12 +1,12 @@
 KEY=$(terpd keys show $ADMIN | jq -r .name)
 MINTER=
-WHITELIST=
+EARLYBIRD=
 
 # add a few minutes buffer to start time
 TIME=$(date -v+5000S +%s)
 
 MSG=$(cat <<EOF
-{ "set_earlybird": { "earlybird": "$WHITELIST" } }
+{ "set_earlybird": { "earlybird": "$EARLYBIRD" } }
 EOF
 )
 
