@@ -7,7 +7,7 @@ use open_edition_factory::{
     msg::{InstantiateMsg, OpenEditionMinterInitMsgExtension},
     state::ParamsExtension,
 };
-use sg2::{
+use factory_utils::{
     msg::{CollectionParams, CreateMinterMsg},
     MinterParams,
 };
