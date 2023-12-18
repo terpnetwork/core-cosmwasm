@@ -1,6 +1,6 @@
 use cosmwasm_std::{Coin, StdError, Timestamp};
 use cw_utils::PaymentError;
-use factory_utils::FeeError;
+use terp_fee::FeeError;
 use thiserror::Error;
 use url::ParseError;
 #[derive(Error, Debug, PartialEq)]

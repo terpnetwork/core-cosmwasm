@@ -36,6 +36,7 @@ cw-utils        = { workspace = true }
 rust_decimal    = { version = "1.14.3" }
 schemars        = { workspace = true }
 serde           = { workspace = true }
-factory-utils             = { workspace = true }
-terp-sdk          = { workspace = true }
+factory-utils   = { workspace = true }
+terp-sdk        = { workspace = true }
+terp-fee        = {workspace = true}
 thiserror       = { workspace = true }

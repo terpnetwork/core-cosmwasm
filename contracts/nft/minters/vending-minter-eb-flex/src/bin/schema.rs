@@ -1,6 +1,6 @@
 use cosmwasm_schema::write_api;
 
-use vending_minter_wl_flex::msg::{ExecuteMsg, InstantiateMsg, QueryMsg};
+use vending_minter_eb_flex::msg::{ExecuteMsg, InstantiateMsg, QueryMsg};
 
 fn main() {
     write_api! {

@@ -1,7 +1,7 @@
 use cosmwasm_schema::cw_serde;
 use cosmwasm_std::{Addr, Coin, Timestamp};
 use cw_storage_plus::{Item, Map};
-use minter-utils::{MinterConfig, Status};
+use minter_utils::{MinterConfig, Status};
 
 #[cw_serde]
 pub struct ConfigExtension {

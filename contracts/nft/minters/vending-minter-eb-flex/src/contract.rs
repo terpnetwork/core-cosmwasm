@@ -20,10 +20,11 @@ use cw_utils::{may_pay, maybe_addr, nonpayable, parse_reply_instantiate_data};
 use rand_core::{RngCore, SeedableRng};
 use rand_xoshiro::Xoshiro128PlusPlus;
 use semver::Version;
-use factory_utils::{checked_fair_burn, ibc_denom_fair_burn};
+
 use factory_utils::query::FactoryUtilsQueryMsg;
 use minter_utils::{MinterConfig, Status, StatusResponse, SudoMsg};
 use terp721::{ExecuteMsg as Terp721ExecuteMsg, InstantiateMsg as Sg721InstantiateMsg};
+use terp_fee::{checked_fair_burn, ibc_denom_fair_burn};
 use terp_sdk::{TerpMsgWrapper, GENESIS_MINT_START_TIME, NATIVE_DENOM};
 use earlybird_flex::msg::{
     ConfigResponse as EarlybirdConfigResponse, HasMemberResponse, Member,

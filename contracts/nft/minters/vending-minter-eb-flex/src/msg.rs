@@ -1,6 +1,6 @@
 use cosmwasm_schema::{cw_serde, QueryResponses};
 use cosmwasm_std::{Coin, Timestamp};
-use minter-utils::StatusResponse;
+use minter_utils::StatusResponse;
 use vending_factory::{msg::VendingMinterCreateMsg, state::VendingMinterParams};
 
 #[cw_serde]

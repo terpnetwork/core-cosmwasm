@@ -1,7 +1,7 @@
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
-use cosmwasm_std::{to_binary, Addr, StdResult, WasmMsg};
+use cosmwasm_std::{to_json_binary, Addr, StdResult, WasmMsg};
 use terp_sdk::CosmosMsg;
 
 use crate::msg::ExecuteMsg;
@@ -17,7 +17,7 @@ impl CollectionEarlybirdContract {
     }
 
     pub fn call<T: Into<ExecuteMsg>>(&self, msg: T) -> StdResult<CosmosMsg> {
-        let msg = to_binary(&msg.into())?;
+        let msg = to_json_binary(&msg.into())?;
         Ok(WasmMsg::Execute {
             contract_addr: self.addr().into(),
             msg,

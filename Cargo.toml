@@ -1,12 +1,15 @@
 [workspace]
 members  = [
     "contracts/nft/collections/*",
+    "contracts/nft/earlybirds/*",
+    "contracts/nft/factories/*",
+    "contracts/nft/minters/*",
     "contracts/revenue/*",
-    "e2e",
     "packages/actions/*",
     "packages/nft/*",
     "packages/revenue/*",
-    "packages/utils/*"
+    "packages/utils/*",
+    "e2e"
     ]
 
 resolver = "2"
