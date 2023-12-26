@@ -1,10 +1,11 @@
 use cosmwasm_std::{coin, coins, Addr, BankMsg, Coin, Decimal, Event, MessageInfo, Uint128};
 use cw_utils::{may_pay, PaymentError};
-use terp_sdk::{ Response, SubMsg, NATIVE_FEE_DENOM, create_fund_community_pool_msg};
+use terp_sdk::{create_fund_community_pool_msg, Response, SubMsg, NATIVE_FEE_DENOM};
 use thiserror::Error;
 
 // governance parameters
 const FEE_BURN_PERCENT: u64 = 50;
+const FOUNDATION: &str = "terp1gnfqzr25fgds7zn7m6njd795aat5yaf6vk7hd9";
 
 /// Burn and distribute fees and return an error if the fee is not enough
 pub fn checked_fair_burn(
@@ -18,9 +19,11 @@ pub fn checked_fair_burn(
     if payment.u128() < fee {
         return Err(FeeError::InsufficientFee(fee, payment.u128()));
     };
+
     if payment.u128() != 0u128 {
         fair_burn(fee, developer, res);
     }
+
     Ok(())
 }
 
@@ -35,32 +38,31 @@ pub fn ibc_denom_fair_burn(
 
     match &developer {
         Some(developer) => {
-            // Calculate the fees. 50% to dev, 50% to community pool
+            // Calculate the fees. 50% to dev, 50% to foundation
             let dev_fee = (fee.amount.mul_ceil(Decimal::percent(FEE_BURN_PERCENT))).u128();
             let dev_coin = coin(dev_fee, fee.denom.to_string());
-            let community_pool_coin = fee.amount.u128() - dev_fee;
-            
+            let foundation_coin = coin(fee.amount.u128() - dev_fee, fee.denom);
+
             event = event.add_attribute("dev_addr", developer.to_string());
             event = event.add_attribute("dev_coin", dev_coin.to_string());
-            event = event.add_attribute("community_pool_coin", community_pool_coin.to_string());
-            
+            event = event.add_attribute("foundation_coin", foundation_coin.to_string());
+
             res.messages.push(SubMsg::new(BankMsg::Send {
                 to_address: developer.to_string(),
                 amount: vec![dev_coin],
             }));
-            res.messages.push(SubMsg::new(create_fund_community_pool_msg(coins(
-                community_pool_coin,
-                fee.denom,
-            ))));
+            res.messages.push(SubMsg::new(BankMsg::Send {
+                to_address: FOUNDATION.to_string(),
+                amount: vec![foundation_coin],
+            }));
         }
         None => {
-            let payment = fee.amount.u128();
-            // No dev, send all to community pool.
-            res.messages
-            .push(SubMsg::new(create_fund_community_pool_msg(coins(
-                payment,
-                NATIVE_FEE_DENOM,
-            ))));
+            // No dev, send all to foundation.
+            event = event.add_attribute("foundation_coin", fee.to_string());
+            res.messages.push(SubMsg::new(BankMsg::Send {
+                to_address: FOUNDATION.to_string(),
+                amount: vec![fee],
+            }));
         }
     }
 
@@ -113,7 +115,7 @@ pub enum FeeError {
 #[cfg(test)]
 mod tests {
     use cosmwasm_std::{coins, Addr, BankMsg};
-    use terp_sdk::{ Response, NATIVE_FEE_DENOM, create_fund_community_pool_msg};
+    use terp_sdk::{create_fund_community_pool_msg, Response, NATIVE_FEE_DENOM};
 
     use crate::{fair_burn, SubMsg};
 
@@ -135,9 +137,9 @@ mod tests {
     fn check_fair_burn_with_dev_rewards() {
         let mut res = Response::new();
 
-        fair_burn(9u128, Some(Addr::unchecked("geordi")), &mut res);
+        fair_burn(9u128, Some(Addr::unchecked("jeret")), &mut res);
         let bank_msg = SubMsg::new(BankMsg::Send {
-            to_address: "geordi".to_string(),
+            to_address: "jeret".to_string(),
             amount: coins(5, NATIVE_FEE_DENOM),
         });
         let burn_msg = SubMsg::new(BankMsg::Burn {
@@ -152,9 +154,9 @@ mod tests {
     fn check_fair_burn_with_dev_rewards_different_amount() {
         let mut res = Response::new();
 
-        fair_burn(1420u128, Some(Addr::unchecked("geordi")), &mut res);
+        fair_burn(1420u128, Some(Addr::unchecked("eret")), &mut res);
         let bank_msg = SubMsg::new(BankMsg::Send {
-            to_address: "geordi".to_string(),
+            to_address: "eret".to_string(),
             amount: coins(710, NATIVE_FEE_DENOM),
         });
         let burn_msg = SubMsg::new(BankMsg::Burn {

@@ -2,7 +2,7 @@
 name        = "terp-fee"
 authors     = ["A hardnett"]
 description = "Definition and types for the SG1 interface"
-version     = { workspace = true }
+version     = "0.1.1"
 edition     = { workspace = true }
 homepage    = { workspace = true }
 repository  = { workspace = true }
