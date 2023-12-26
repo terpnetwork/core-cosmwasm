@@ -9,7 +9,8 @@ members  = [
     "packages/nft/*",
     "packages/revenue/*",
     "packages/utils/*",
-    "e2e"
+    "e2e",
+    "test-suite",
     ]
 
 resolver = "2"
@@ -30,7 +31,7 @@ terp-residual-registry = { path = "contracts/revenue/residual-registry", feature
 terp721                    = { version = "0.1.0", path = "packages/nft/terp721", features = ["library"] }
 terp721-base               = { version = "0.1.0", path = "contracts/nft/collections/terp721-base", features = ["library"] }
 terp721-nt                 = { version = "0.1.0", path = "contracts/nft/collections/terp721-nt" }
-terp-splits                 = { version = "0.1.0", path = "contracts/revenue/splits" }
+terp-splits                = { version = "0.1.0", path = "contracts/revenue/splits" }
 terp721-updatable          = { version = "0.1.0", path = "contracts/nft/collections/terp721-updatable" }
 base-factory               = { version = "0.1.0", path = "contracts/nft/factories/base-factory" }
 vending-factory            = { version = "0.1.0", path = "contracts/nft/factories/vending-factory", features = ["library"] }
@@ -73,7 +74,7 @@ anyhow           = "1.0.41"
 
 # dev-dependencies
 cw-multi-test    = "0.16.5"
-terp-multi-test       = { version = "0.1.0", path = "packages/utils/terp-multi-test" }
+terp-multi-test  = { version = "0.1.0", path = "packages/utils/terp-multi-test" }
 assert_matches   = "1.5"
 serde_json       = "1.0"
 env_logger       = "0.9.0"
@@ -82,7 +83,7 @@ once_cell        = "1.13.0"
 rand             = "0.8"
 itertools        = "0.10.5"
 mockall          = "0.11.4"
-test-suite          = { version = "0.1.0", path = "packages/utils/test-suite" }
+test-suite       = { version = "0.1.0", path = "test-suite" }
 cw-ownable       = "0.5.1"
 url              = "2.2.2"
 

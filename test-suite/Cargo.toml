@@ -59,7 +59,7 @@ vending-minter        = { workspace = true, features = ["library"] }
 base-factory          = { workspace = true }
 base-minter           = { workspace = true }
 terp721-nt            = { workspace = true }
-terp-code-controllers      = { workspace = true }
+terp-code-controllers = { workspace = true }
 cw-ownable = "0.5.1"
 
 [dev-dependencies]
@@ -78,6 +78,6 @@ rand_xoshiro    = { version = "0.6.0", default-features = false }
 schemars        = { workspace = true }
 sha2            = { workspace = true }
 shuffle         = { git = "https://github.com/webmaster128/shuffle", branch = "rm-getrandom", version = "0.1.7" }
-terp-fee             = { workspace = true }
-minter-utils             = { workspace = true }
+terp-fee        = { workspace = true }
+minter-utils    = { workspace = true }
 url             = { workspace = true }
