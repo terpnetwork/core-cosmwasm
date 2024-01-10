@@ -15,7 +15,7 @@ deploy-local:
 		-p 26657:26657 \
 		-p 9090:9090 \
 		--mount type=volume,source=terp_data,target=/root \
-		terpnetwork/terp-core:8.0.0 /data/entry-point.sh $(TEST_ADDRS)
+		terpnetwork/terp-core:v4.1.0 /data/entry-point.sh $(TEST_ADDRS)
 
 e2etest:
 	RUST_LOG=info CONFIG=configs/cosm-orc.yaml cargo integration-test $(TEST_NAME)

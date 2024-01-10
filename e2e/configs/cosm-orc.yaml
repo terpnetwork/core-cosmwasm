@@ -1,5 +1,5 @@
 chain_cfg: 
-  denom: "uterp"
+  denom: "uthiol"
   prefix: "terp"
   chain_id: "testing"
   grpc_endpoint: "http://localhost:9090/"
