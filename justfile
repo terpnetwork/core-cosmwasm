@@ -31,7 +31,7 @@ deploy-local:
 	docker run --rm -d --name terp-core \
 		-e DENOM=uthiolx \
 		-e CHAINID=90u-2 \
-		-e GAS_LIMIT=75000000 \
+		-e GAS_LIMIT=-1 \
 		-p 1317:1317 \
 		-p 26656:26656 \
 		-p 26657:26657 \
@@ -47,7 +47,7 @@ deploy-local-arm:
 	docker run --rm -d --name terp-core \
 		-e DENOM=uthiolx \
 		-e CHAINID=90u-2 \
-		-e GAS_LIMIT=75000000 \
+		-e GAS_LIMIT=-1 \
 		-p 1317:1317 \
 		-p 26656:26656 \
 		-p 26657:26657 \
