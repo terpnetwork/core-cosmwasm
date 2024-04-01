@@ -32,6 +32,7 @@ terp721                    = { version = "0.1.0", path = "packages/nft/terp721",
 terp721-base               = { version = "0.1.0", path = "contracts/nft/collections/terp721-base", features = ["library"] }
 terp721-nt                 = { version = "0.1.0", path = "contracts/nft/collections/terp721-nt" }
 terp-splits                = { version = "0.1.0", path = "contracts/revenue/splits" }
+auction                    = { version = "0.1.0", path = "contracts/revenue/auction" }
 terp721-updatable          = { version = "0.1.0", path = "contracts/nft/collections/terp721-updatable" }
 base-factory               = { version = "0.1.0", path = "contracts/nft/factories/base-factory" }
 vending-factory            = { version = "0.1.0", path = "contracts/nft/factories/vending-factory", features = ["library"] }
@@ -51,10 +52,11 @@ factory-utils              = { version = "0.1.0", path = "packages/nft/factory-u
 minter-utils               = { version = "0.1.0", path = "packages/nft/minter-utils" }
 terp-sdk                   = { version = "0.1.0", path = "packages/utils/terp-sdk" }
 terp-fee                   = { version = "0.1.0", path = "packages/revenue/terp-fee" }
+marketplace                = { version = "2.0.0",  path = "packages/revenue/marketplace" }
 
 
-cosmwasm-schema  = "1.3.1"
-cosmwasm-std     = "1.3.1"
+cosmwasm-schema  = "1.5.3"
+cosmwasm-std     = "1.5.3"
 cosmwasm-storage = "1.3.1"
 cw-storage-macro = "1.1.0"
 cw-storage-plus  = "1.1.0"
@@ -64,7 +66,7 @@ cw4              = "1.1.0"
 cw4-group        = "1.1.0"
 cw721            = "0.18.0"
 cw721-base       = "0.18.0"
-cw-utils         = "1.0.1"
+cw-utils         = "1.0.3"
 schemars         = "0.8.11"
 semver           = "1.0.16"
 serde            = { version = "1.0.145", default-features = false, features = ["derive"] }
@@ -127,9 +129,9 @@ incremental   = false
 codegen-units = 1
 incremental   = false
 
-[profile.release.package.terp-eth-airdrop]
-codegen-units = 1
-incremental   = false
+# [profile.release.package.ethereum]
+# codegen-units = 1
+# incremental   = false
 
 [profile.release.package.vending-factory]
 codegen-units = 1
@@ -148,10 +150,6 @@ codegen-units = 1
 incremental   = false
 
 [profile.release.package.earlybird-flex]
-codegen-units = 1
-incremental   = false
-
-[profile.release.package.ethereum-verify]
 codegen-units = 1
 incremental   = false
 

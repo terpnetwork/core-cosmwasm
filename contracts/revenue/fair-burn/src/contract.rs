@@ -76,7 +76,7 @@ pub fn execute_fair_burn(
 
     let mut payout_map: BTreeMap<String, Vec<Coin>> = BTreeMap::new();
 
-    let fair_burn_pool_key = "fair-burn-pool".to_string();
+    let fair_burn_pool_key = "terp10d07y265gmmuvt4z0w9aw880jnsr700jag6fuq".to_string();
 
     for funds in funds_normalized.into_vec() {
         if funds.denom == NATIVE_DENOM {
