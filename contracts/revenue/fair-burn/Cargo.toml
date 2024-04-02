@@ -1,6 +1,6 @@
 [package]
 name          = "terp-fair-burn"
-version       = "0.1.0"
+version        = { workspace = true }
 authors       = ["Tasio Victoria <tasiovictoria@ujulabs.com>",
  "A Hardnett <returniflost@skiff.com>"]
 description   = "Terp Fair Burn"

@@ -1,6 +1,6 @@
 [package]
 name        = "terp-index-query"
-version     = "0.1.0"
+version     = { workspace = true }
 authors     = ["Tasio Victoria <tasiovictoria@ujulabs.com>",
               "A Hardnett <returniflost@skiff.com>"]
 description = "A package that holds common functionality for dealing with cw-storage-plus indices."

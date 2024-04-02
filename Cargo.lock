@@ -360,7 +360,7 @@ dependencies = [
 
 [[package]]
 name = "base-factory"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -377,7 +377,7 @@ dependencies = [
 
 [[package]]
 name = "base-minter"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "base-factory",
  "cosmwasm-schema 1.5.3",
@@ -1541,7 +1541,7 @@ checksum = "545b22097d44f8a9581187cdf93de7a71e4722bf51200cfaba810865b49a495d"
 
 [[package]]
 name = "e2e"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "assert_matches",
  "cosm-orc",
@@ -1565,7 +1565,7 @@ dependencies = [
 
 [[package]]
 name = "earlybird"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -1582,7 +1582,7 @@ dependencies = [
 
 [[package]]
 name = "earlybird-flex"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -1600,7 +1600,7 @@ dependencies = [
 
 [[package]]
 name = "earlybird-immutable"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -1832,7 +1832,7 @@ dependencies = [
 
 [[package]]
 name = "ethereum-verify"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -1927,7 +1927,7 @@ dependencies = [
 
 [[package]]
 name = "factory-utils"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -2683,7 +2683,7 @@ dependencies = [
 
 [[package]]
 name = "minter-utils"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -2772,7 +2772,7 @@ checksum = "624a8340c38c1b80fd549087862da4ba43e08858af025b236e509b6649fc13d5"
 
 [[package]]
 name = "open-edition-factory"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "base-factory",
  "cosmwasm-schema 1.5.3",
@@ -2790,7 +2790,7 @@ dependencies = [
 
 [[package]]
 name = "open-edition-minter"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -4150,7 +4150,7 @@ dependencies = [
 
 [[package]]
 name = "terp-code-controllers"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -4164,7 +4164,7 @@ dependencies = [
 
 [[package]]
 name = "terp-fair-burn"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -4181,7 +4181,7 @@ dependencies = [
 
 [[package]]
 name = "terp-fee"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-std",
  "cw-utils 1.0.3",
@@ -4192,7 +4192,7 @@ dependencies = [
 
 [[package]]
 name = "terp-index-query"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -4201,7 +4201,7 @@ dependencies = [
 
 [[package]]
 name = "terp-marketplace-utils"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 2.0.0",
  "cosmwasm-std",
@@ -4213,7 +4213,7 @@ dependencies = [
 
 [[package]]
 name = "terp-metadata"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "schemars",
@@ -4222,7 +4222,7 @@ dependencies = [
 
 [[package]]
 name = "terp-mint-hooks"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -4237,7 +4237,7 @@ dependencies = [
 
 [[package]]
 name = "terp-mint-hooks-derive"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -4247,7 +4247,7 @@ dependencies = [
 
 [[package]]
 name = "terp-multi-test"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "cosmwasm-std",
@@ -4259,7 +4259,7 @@ dependencies = [
 
 [[package]]
 name = "terp-residual-registry"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -4277,7 +4277,7 @@ dependencies = [
 
 [[package]]
 name = "terp-sdk"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -4288,7 +4288,7 @@ dependencies = [
 
 [[package]]
 name = "terp-splits"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -4306,7 +4306,7 @@ dependencies = [
 
 [[package]]
 name = "terp721"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -4320,7 +4320,7 @@ dependencies = [
 
 [[package]]
 name = "terp721-base"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -4339,7 +4339,7 @@ dependencies = [
 
 [[package]]
 name = "terp721-metadata-onchain"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -4357,7 +4357,7 @@ dependencies = [
 
 [[package]]
 name = "terp721-nt"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -4374,7 +4374,7 @@ dependencies = [
 
 [[package]]
 name = "terp721-updatable"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -4432,7 +4432,7 @@ dependencies = [
 
 [[package]]
 name = "test-suite"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "async-std",
@@ -4834,7 +4834,7 @@ checksum = "f962df74c8c05a667b5ee8bcf162993134c104e96440b663c8daa176dc772d8c"
 
 [[package]]
 name = "unit-tests"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "cosmwasm-schema 1.5.3",
@@ -4897,7 +4897,7 @@ checksum = "4a72e1902dde2bd6441347de2b70b7f5d59bf157c6c62f0c44572607a1d55bbe"
 
 [[package]]
 name = "vending-factory"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "base-factory",
  "cosmwasm-schema 1.5.3",
@@ -4916,7 +4916,7 @@ dependencies = [
 
 [[package]]
 name = "vending-minter"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",
@@ -4945,7 +4945,7 @@ dependencies = [
 
 [[package]]
 name = "vending-minter-eb-flex"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cosmwasm-schema 1.5.3",
  "cosmwasm-std",

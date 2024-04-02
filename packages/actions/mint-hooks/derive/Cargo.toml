@@ -1,6 +1,6 @@
 [package]
 name        = "terp-mint-hooks-derive"
-version     = "0.1.0"
+version      = { workspace = true }
 description = "Macros for generating code used by the `terp-mint-hooks` crate"
 authors     = ["Shane Vitarana <s@users.noreply.publicawesome.com>"]
 edition     = { workspace = true }

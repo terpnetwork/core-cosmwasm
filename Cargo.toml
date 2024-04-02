@@ -16,7 +16,7 @@ members  = [
 resolver = "2"
 
 [workspace.package]
-version    = "0.1.0"
+version    = "0.1.1"
 edition    = "2021"
 homepage   = "https://terp.network"
 repository = "https://github.com/terpnetwork/core-cosmwasm"
@@ -26,31 +26,31 @@ license    = "Apache-2.0"
 terp-fair-burn = { path = "contracts/revenue/fair-burn", features = ["library"] }
 terp-residual-registry = { path = "contracts/revenue/residual-registry", features = ["library",] }
 
-terp721                    = { version = "0.1.0", path = "packages/nft/terp721", features = ["library"] }
-terp721-base               = { version = "0.1.0", path = "contracts/nft/collections/terp721-base", features = ["library"] }
-terp721-nt                 = { version = "0.1.0", path = "contracts/nft/collections/terp721-nt" }
-terp-splits                = { version = "0.1.0", path = "contracts/revenue/splits" }
-auction                    = { version = "0.1.0", path = "contracts/revenue/auction" }
-terp721-updatable          = { version = "0.1.0", path = "contracts/nft/collections/terp721-updatable" }
-base-factory               = { version = "0.1.0", path = "contracts/nft/factories/base-factory" }
-vending-factory            = { version = "0.1.0", path = "contracts/nft/factories/vending-factory", features = ["library"] }
-open-edition-factory       = { version = "0.1.0", path = "contracts/nft/factories/open-edition-factory", features = ["library"] }
-base-minter                = { version = "0.1.0", path = "contracts/nft/minters/base-minter" }
-vending-minter             = { version = "0.1.0", path = "contracts/nft/minters/vending-minter" }
-open-edition-minter        = { version = "0.1.0", path = "contracts/nft/minters/open-edition-minter" }
-earlybird-immutable        = { version = "0.1.0", path = "contracts/nft/earlybirds/earlybird-immutable" }
-earlybird-flex             = { version = "0.1.0", path = "contracts/nft/earlybirds/earlybird-flex" }
-earlybird                  = { version = "0.1.0", path = "contracts/nft/earlybirds/earlybird" }
-ethereum-verify            = { version = "0.1.0", path = "packages/actions/ethereum-verify" }
-terp-code-controllers      = { version = "0.1.0", path = "packages/actions/controllers" }
-terp-metadata              = { version = "0.1.0", path = "packages/nft/terp-metadata" }
-terp-mint-hooks            = { version = "0.1.0", path = "packages/actions/mint-hooks" }
-terp-index-query           = { version = "0.1.0", path = "packages/actions/terp-index-query" }
-factory-utils              = { version = "0.1.0", path = "packages/nft/factory-utils" }
-minter-utils               = { version = "0.1.0", path = "packages/nft/minter-utils" }
-terp-sdk                   = { version = "0.1.0", path = "packages/utils/terp-sdk" }
-terp-fee                   = { version = "0.1.0", path = "packages/revenue/terp-fee" }
-terp-marketplace-utils                = { version = "0.1.0",  path = "packages/revenue/marketplace" }
+terp721                    = { version = "0.1.1", path = "packages/nft/terp721", features = ["library"] }
+terp721-base               = { version = "0.1.1", path = "contracts/nft/collections/terp721-base", features = ["library"] }
+terp721-nt                 = { version = "0.1.1", path = "contracts/nft/collections/terp721-nt" }
+terp-splits                = { version = "0.1.1", path = "contracts/revenue/splits" }
+auction                    = { version = "0.1.1", path = "contracts/revenue/auction" }
+terp721-updatable          = { version = "0.1.1", path = "contracts/nft/collections/terp721-updatable" }
+base-factory               = { version = "0.1.1", path = "contracts/nft/factories/base-factory" }
+vending-factory            = { version = "0.1.1", path = "contracts/nft/factories/vending-factory", features = ["library"] }
+open-edition-factory       = { version = "0.1.1", path = "contracts/nft/factories/open-edition-factory", features = ["library"] }
+base-minter                = { version = "0.1.1", path = "contracts/nft/minters/base-minter" }
+vending-minter             = { version = "0.1.1", path = "contracts/nft/minters/vending-minter" }
+open-edition-minter        = { version = "0.1.1", path = "contracts/nft/minters/open-edition-minter" }
+earlybird-immutable        = { version = "0.1.1", path = "contracts/nft/earlybirds/earlybird-immutable" }
+earlybird-flex             = { version = "0.1.1", path = "contracts/nft/earlybirds/earlybird-flex" }
+earlybird                  = { version = "0.1.1", path = "contracts/nft/earlybirds/earlybird" }
+ethereum-verify            = { version = "0.1.1", path = "packages/actions/ethereum-verify" }
+terp-code-controllers      = { version = "0.1.1", path = "packages/actions/controllers" }
+terp-metadata              = { version = "0.1.1", path = "packages/nft/terp-metadata" }
+terp-mint-hooks            = { version = "0.1.1", path = "packages/actions/mint-hooks" }
+terp-index-query           = { version = "0.1.1", path = "packages/actions/terp-index-query" }
+factory-utils              = { version = "0.1.1", path = "packages/nft/factory-utils" }
+minter-utils               = { version = "0.1.1", path = "packages/nft/minter-utils" }
+terp-sdk                   = { version = "0.1.1", path = "packages/utils/terp-sdk" }
+terp-fee                   = { version = "0.1.1", path = "packages/revenue/terp-fee" }
+terp-marketplace-utils                = { version = "0.1.1",  path = "packages/revenue/marketplace" }
 
 
 cosmwasm-schema  = "1.5.3"
@@ -74,8 +74,8 @@ anyhow           = "1.0.41"
 
 # dev-dependencies
 cw-multi-test    = "0.16.5"
-terp-multi-test  = { version = "0.1.0", path = "packages/utils/terp-multi-test" }
-test-suite       = { version = "0.1.0", path = "test-suite" }
+terp-multi-test  = { version = "0.1.1", path = "packages/utils/terp-multi-test" }
+test-suite       = { version = "0.1.1", path = "test-suite" }
 assert_matches   = "1.5"
 serde_json       = "1.0"
 env_logger       = "0.9.0"

@@ -1,6 +1,6 @@
 [package]
 name          = "terp-residual-registry"
-version       = "0.1.0"
+version        = { workspace = true }
 authors       = ["Tasio Victoria <tasiovictoria@ujulabs.com>"]
 description   = "Terp Residual Registry"
 documentation = "https://docs.rs/terp-residual-registry"

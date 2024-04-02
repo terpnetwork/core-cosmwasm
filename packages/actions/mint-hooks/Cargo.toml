@@ -18,4 +18,4 @@ serde                = { workspace = true }
 terp-code-controllers       = { workspace = true }
 terp-sdk               = { workspace = true }
 thiserror            = { workspace = true }
-terp-mint-hooks-derive = { path = "./derive", version = "0.1.0" }
+terp-mint-hooks-derive = { path = "./derive" }
