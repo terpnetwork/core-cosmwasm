@@ -73,21 +73,21 @@ pub fn create_auction(
     }
 
     let auction = Auction {
-        auction_id: auction_id.clone(),
+        auction_id,
         nft_contract: nft_contract.clone(),
         token_id: token_id.clone(),
         seller: seller.clone(),
-        duration: duration,
+        duration,
         min_duration: config.min_duration,
         denom: denom.clone(),
-        reserve_price: reserve_price,
+        reserve_price,
         end_time: 0,
         auction_type: auction_type.clone(),
         bidder: None,
         amount: reserve_price,
-        creator_address: creator_address,
-        royalty_fee: royalty_fee,
-        protocol_fee: config.protocol_fee.clone(),
+        creator_address,
+        royalty_fee,
+        protocol_fee: config.protocol_fee,
         is_settled: false,
     };
     // save auction
@@ -130,7 +130,7 @@ pub fn set_royalty_fee(
     let nft_contract_addr = deps.api.addr_validate(&contract_addr)?;
     let creator_addr = deps.api.addr_validate(&creator)?;
     let royalty = Royalty {
-        royalty_fee: royalty_fee,
+        royalty_fee,
         creator: creator_addr,
     };
     ROYALTIES.save(deps.storage, &nft_contract_addr, &royalty)?;
@@ -234,8 +234,8 @@ pub fn place_bid(
         .funds
         .iter()
         .find(|c| c.denom == auction.denom)
-        .map(|c| Uint128::from(c.amount))
-        .unwrap_or_else(|| Uint128::zero());
+        .map(|c| c.amount)
+        .unwrap_or_else(Uint128::zero);
     //check time
     let block_time = env.block.time.seconds();
     let mut messages: Vec<CosmosMsg> = vec![];
@@ -340,7 +340,7 @@ pub fn place_bid(
                 };
 
                 let min_bid_amount =
-                    calculate_min_bid_amount(config.min_increment.clone(), auction.amount.clone())?;
+                    calculate_min_bid_amount(config.min_increment, auction.amount)?;
                 if bid_amount < min_bid_amount {
                     return Err(ContractError::InvalidAmount(
                         "bid amount too low".to_string(),
@@ -732,7 +732,7 @@ pub fn only_owner(deps: Deps, _env: &Env, info: MessageInfo) -> Result<bool, Con
     if info.sender != config.owner {
         return Err(ContractError::Unauthorized {});
     }
-    return Ok(true);
+    Ok(true)
 }
 
 pub fn only_royalty_admin(

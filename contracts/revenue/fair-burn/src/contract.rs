@@ -94,7 +94,7 @@ pub fn execute_fair_burn(
                     Some(recipient) => {
                         payout_map
                             .entry(recipient.to_string())
-                            .or_insert(vec![])
+                            .or_default()
                             .push(dist_coin.clone());
                     }
                     None => {
@@ -114,14 +114,14 @@ pub fn execute_fair_burn(
 
             payout_map
                 .entry(fair_burn_pool_key.clone())
-                .or_insert(vec![])
+                .or_default()
                 .push(fee_coin.clone());
 
             if let Some(dist_coin) = dist_coin {
                 let recipient = recipient.as_ref().unwrap().to_string();
                 payout_map
                     .entry(recipient)
-                    .or_insert(vec![])
+                    .or_default()
                     .push(dist_coin.clone());
             }
         }

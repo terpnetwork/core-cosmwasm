@@ -10,8 +10,8 @@ use marketplace::auction::{
 };
 use std::str::FromStr;
 
-use crate::auction::{calculate_fee, calculate_min_bid_amount};
-use crate::contract::{execute, instantiate, query};
+
+use crate::contract::{execute, instantiate};
 use crate::error::ContractError;
 use crate::mock_querier::mock_dependencies;
 use crate::querier::{
@@ -26,7 +26,7 @@ fn setup_contract(deps: DepsMut, accepted_denom: Vec<String>) {
         min_increment: Decimal::from_str("0.1").unwrap(),
         duration: 86400,
         min_duration: 900,
-        accepted_denom: accepted_denom,
+        accepted_denom,
         protocol_addr: "collector".to_string(),
         max_royalty_fee: Decimal::percent(20), // 20%
     };
@@ -365,11 +365,11 @@ fn settle_buynow() {
         auction_id: Uint128::zero(),
     };
     env.block.time = Timestamp::from_seconds(120);
-    let info = mock_info("random", &vec![]);
+    let info = mock_info("random", &[]);
     let res = execute(deps.as_mut(), env.clone(), info, settle_msg.clone()).unwrap();
     assert_eq!(4, res.messages.len());
 
-    let send_fund_collector_msg = res.messages.get(0).expect("no message");
+    let send_fund_collector_msg = res.messages.first().expect("no message");
     assert_eq!(
         &send_fund_collector_msg.msg,
         &CosmosMsg::Bank(BankMsg::Send {
@@ -560,11 +560,11 @@ fn settle_buynow_with_royalty() {
         auction_id: Uint128::zero(),
     };
     env.block.time = Timestamp::from_seconds(120);
-    let info = mock_info("random", &vec![]);
+    let info = mock_info("random", &[]);
     let res = execute(deps.as_mut(), env.clone(), info, settle_msg.clone()).unwrap();
     assert_eq!(5, res.messages.len());
 
-    let send_fund_collector_msg = res.messages.get(0).expect("no message");
+    let send_fund_collector_msg = res.messages.first().expect("no message");
     assert_eq!(
         &send_fund_collector_msg.msg,
         &CosmosMsg::Bank(BankMsg::Send {
@@ -752,7 +752,7 @@ fn settle_auction() {
     let info = mock_info("fliper", &[Coin::new(1_100000, "uluna")]);
     let res = execute(deps.as_mut(), env.clone(), info, place_bid_msg.clone()).unwrap();
     assert_eq!(1, res.messages.len());
-    let send_fund_buyer_msg = res.messages.get(0).expect("no message");
+    let send_fund_buyer_msg = res.messages.first().expect("no message");
     assert_eq!(
         &send_fund_buyer_msg.msg,
         &CosmosMsg::Bank(BankMsg::Send {
@@ -786,7 +786,7 @@ fn settle_auction() {
     let info = mock_info("buyer", &[Coin::new(1_210000, "uluna")]);
     let res = execute(deps.as_mut(), env.clone(), info, place_bid_msg.clone()).unwrap();
     assert_eq!(1, res.messages.len());
-    let send_fund_fliper_msg = res.messages.get(0).expect("no message");
+    let send_fund_fliper_msg = res.messages.first().expect("no message");
     assert_eq!(
         &send_fund_fliper_msg.msg,
         &CosmosMsg::Bank(BankMsg::Send {
@@ -819,7 +819,7 @@ fn settle_auction() {
     let settle_msg = ExecuteMsg::Settle {
         auction_id: Uint128::zero(),
     };
-    let info = mock_info("random", &vec![]);
+    let info = mock_info("random", &[]);
     let err = execute(deps.as_mut(), env.clone(), info, settle_msg.clone()).unwrap_err();
     match err {
         ContractError::InvalidAuction { .. } => {}
@@ -828,11 +828,11 @@ fn settle_auction() {
 
     // settle
     env.block.time = Timestamp::from_seconds(86900);
-    let info = mock_info("random", &vec![]);
+    let info = mock_info("random", &[]);
     let res = execute(deps.as_mut(), env.clone(), info, settle_msg.clone()).unwrap();
     assert_eq!(4, res.messages.len());
 
-    let send_fund_collector_msg = res.messages.get(0).expect("no message");
+    let send_fund_collector_msg = res.messages.first().expect("no message");
     assert_eq!(
         &send_fund_collector_msg.msg,
         &CosmosMsg::Bank(BankMsg::Send {
@@ -1024,7 +1024,7 @@ fn check_freeze_and_cancel_auction() {
     let res = execute(deps.as_mut(), env, info, cancel_msg).unwrap();
     assert_eq!(2, res.messages.len());
 
-    let send_nft_msg = res.messages.get(0).expect("no message");
+    let send_nft_msg = res.messages.first().expect("no message");
     assert_eq!(
         &send_nft_msg.msg,
         &CosmosMsg::Wasm(WasmMsg::Execute {
@@ -1116,7 +1116,7 @@ fn admin_cancel() {
     };
     let res = execute(deps.as_mut(), env, info, admin_cancel_msg).unwrap();
     assert_eq!(1, res.messages.len());
-    let send_nft_msg = res.messages.get(0).expect("no message");
+    let send_nft_msg = res.messages.first().expect("no message");
     assert_eq!(
         &send_nft_msg.msg,
         &CosmosMsg::Wasm(WasmMsg::Execute {
@@ -1172,7 +1172,7 @@ fn admin_cancel() {
     let res = execute(deps.as_mut(), env, info, admin_cancel_msg).unwrap();
     assert_eq!(2, res.messages.len());
 
-    let send_fund_bidder_msg = res.messages.get(0).expect("no message");
+    let send_fund_bidder_msg = res.messages.first().expect("no message");
     assert_eq!(
         &send_fund_bidder_msg.msg,
         &CosmosMsg::Bank(BankMsg::Send {

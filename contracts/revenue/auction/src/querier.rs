@@ -52,7 +52,7 @@ pub fn query_nft_owner(deps: Deps, nft_contract: String, token_id: String) -> St
                 include_expired: None,
             })?,
         }))?;
-    Ok(deps.api.addr_validate(&owner_response.owner)?)
+    deps.api.addr_validate(&owner_response.owner)
 }
 
 pub fn query_auction(deps: Deps, auction_id: Uint128) -> StdResult<AuctionResponse> {
@@ -61,14 +61,8 @@ pub fn query_auction(deps: Deps, auction_id: Uint128) -> StdResult<AuctionRespon
 }
 
 fn _query_auction(auction: Auction) -> StdResult<AuctionResponse> {
-    let creator_address = match auction.creator_address {
-        Some(v) => Some(v.to_string()),
-        None => None,
-    };
-    let bidder = match auction.bidder {
-        Some(v) => Some(v.to_string()),
-        None => None,
-    };
+    let creator_address = auction.creator_address.map(|v| v.to_string());
+    let bidder = auction.bidder.map(|v| v.to_string());
     Ok(AuctionResponse {
         auction_id: auction.auction_id,
         auction_type: auction.auction_type,
@@ -80,10 +74,10 @@ fn _query_auction(auction: Auction) -> StdResult<AuctionResponse> {
         denom: auction.denom,
         reserve_price: auction.reserve_price,
         end_time: auction.end_time,
-        bidder: bidder,
+        bidder,
         amount: auction.amount,
         is_settled: auction.is_settled,
-        creator_address: creator_address,
+        creator_address,
         royalty_fee: auction.royalty_fee,
     })
 }
@@ -130,7 +124,7 @@ pub fn query_auction_by_nft(
             auction_id
         })
         .collect::<Vec<u128>>();
-    return Ok(auction_ids);
+    Ok(auction_ids)
 }
 
 pub fn query_auction_by_seller(
@@ -150,7 +144,7 @@ pub fn query_auction_by_seller(
         })
         .collect::<Vec<u128>>();
 
-    return Ok(auction_ids);
+    Ok(auction_ids)
 }
 
 pub fn query_auction_by_end_time(
@@ -181,7 +175,7 @@ pub fn query_auction_by_end_time(
         })
         .collect::<Vec<u128>>();
 
-    return Ok(auction_ids);
+    Ok(auction_ids)
 }
 
 pub fn query_not_started_auctions(
@@ -212,7 +206,7 @@ pub fn query_not_started_auctions(
             auction_id
         })
         .collect::<Vec<u128>>();
-    return Ok(auction_ids);
+    Ok(auction_ids)
 }
 
 pub fn query_auction_by_bidder(
@@ -238,7 +232,7 @@ pub fn query_auction_by_bidder(
             auction_id
         })
         .collect::<Vec<u128>>();
-    return Ok(auction_ids);
+    Ok(auction_ids)
 }
 
 pub fn query_auction_by_amount(
@@ -264,7 +258,7 @@ pub fn query_auction_by_amount(
         })
         .collect::<Vec<u128>>();
 
-    return Ok(auction_ids);
+    Ok(auction_ids)
 }
 
 pub fn query_calculate_price(
@@ -312,7 +306,7 @@ pub fn query_bid_history_by_auction_id(
 
 pub fn query_bid_number(deps: Deps, auction_id: Uint128) -> StdResult<BidsCountResponse> {
     let count = BID_COUNT_BY_AUCTION_ID.load(deps.storage, auction_id.u128())?;
-    Ok(BidsCountResponse { count: count })
+    Ok(BidsCountResponse { count })
 }
 
 pub fn query_all_royalty(
@@ -338,14 +332,11 @@ pub fn query_royalty_admin(deps: Deps, address: String) -> StdResult<RoyaltyAdmi
     let address_raw = deps.api.addr_validate(&address)?;
     let admin = ROYALTY_ADMINS.may_load(deps.storage, &address_raw)?;
 
-    let enable = match admin {
-        Some(v) => v,
-        None => false,
-    };
+    let enable = admin.unwrap_or(false);
 
     Ok(RoyaltyAdminResponse {
-        address: address,
-        enable: enable,
+        address,
+        enable,
     })
 }
 
@@ -363,7 +354,7 @@ pub fn construct_action_response(
             Err(_) => (),
         };
     }
-    Ok(AuctionListResponse { auctions: auctions })
+    Ok(AuctionListResponse { auctions })
 }
 
 fn parse_royalty(item: StdResult<(Addr, Royalty)>) -> StdResult<AllRoyaltyFeeResponse> {
