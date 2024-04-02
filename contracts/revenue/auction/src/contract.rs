@@ -32,10 +32,10 @@ pub fn instantiate(
         min_reserve_price: msg.min_reserve_price,
         max_royalty_fee: msg.max_royalty_fee,
         duration: msg.duration,
-        extension_duration: msg.extension_duration,
+        min_duration: msg.min_duration,
         min_increment: msg.min_increment,
         accepted_denom: msg.accepted_denom,
-        collector_address: deps.api.addr_validate(&msg.collector_address)?,
+        protocol_addr: deps.api.addr_validate(&msg.protocol_addr)?,
     };
 
     CONFIG.save(deps.storage, &config)?;
@@ -72,9 +72,9 @@ pub fn execute(
             min_reserve_price,
             max_royalty_fee,
             duration,
-            extension_duration,
+            min_duration,
             accepted_denom,
-            collector_address,
+            protocol_addr,
         } => admin_change_config(
             deps,
             env,
@@ -84,9 +84,9 @@ pub fn execute(
             min_reserve_price,
             max_royalty_fee,
             duration,
-            extension_duration,
+            min_duration,
             accepted_denom,
-            collector_address,
+            protocol_addr,
         ),
         ExecuteMsg::SetRoyaltyFee {
             contract_addr,
@@ -117,7 +117,6 @@ pub fn receive_nft(
             is_instant_sale,
         }) => {
             // need to check that this contract is owner of nft to prevent malicious contract call this function directly
-
             let seller = deps.api.addr_validate(&cw721_msg.sender)?;
             let nft_contract = info.sender.clone();
             let token_id = cw721_msg.token_id.clone();

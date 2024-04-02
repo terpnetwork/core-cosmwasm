@@ -21,9 +21,9 @@ pub struct Config {
     pub min_increment: Decimal,
     pub max_royalty_fee: Decimal,
     pub duration: u64,
-    pub extension_duration: u64,
+    pub min_duration: u64,
     pub accepted_denom: Vec<String>,
-    pub collector_address: Addr,
+    pub protocol_addr: Addr,
 }
 
 #[cw_serde]
@@ -40,7 +40,7 @@ pub struct Auction {
     pub auction_type: AuctionType,
     pub seller: Addr,
     pub duration: u64,
-    pub extension_duration: u64,
+    pub min_duration: u64,
     pub denom: String,
     pub reserve_price: Uint128,
     pub end_time: u64,

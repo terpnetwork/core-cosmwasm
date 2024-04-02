@@ -29,8 +29,8 @@ pub fn query_config(deps: Deps) -> StdResult<ConfigResponse> {
         accepted_denom: config.accepted_denom,
         duration: config.duration,
         min_increment: config.min_increment,
-        extension_duration: config.extension_duration,
-        collector_address: config.collector_address.to_string(),
+        min_duration: config.min_duration,
+        protocol_addr: config.protocol_addr.to_string(),
         max_royalty_fee: config.max_royalty_fee,
     })
 }
@@ -76,7 +76,7 @@ fn _query_auction(auction: Auction) -> StdResult<AuctionResponse> {
         token_id: auction.token_id,
         seller: auction.seller.to_string(),
         duration: auction.duration,
-        extension_duration: auction.extension_duration,
+        min_duration: auction.min_duration,
         denom: auction.denom,
         reserve_price: auction.reserve_price,
         end_time: auction.end_time,

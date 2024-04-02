@@ -78,7 +78,7 @@ pub fn create_auction(
         token_id: token_id.clone(),
         seller: seller.clone(),
         duration: duration,
-        extension_duration: config.extension_duration,
+        min_duration: config.min_duration,
         denom: denom.clone(),
         reserve_price: reserve_price,
         end_time: 0,
@@ -353,8 +353,8 @@ pub fn place_bid(
                 auction.amount = bid_amount;
 
                 // extension period
-                if block_time + auction.extension_duration >= auction.end_time {
-                    let end_time = block_time + auction.extension_duration;
+                if block_time + auction.min_duration >= auction.end_time {
+                    let end_time = block_time + auction.min_duration;
                     auction.end_time = end_time;
                 }
 
@@ -476,7 +476,7 @@ pub fn settle_auction(
             },
             amount: protocol_fee,
         };
-        messages.push(protocol_asset.into_msg(config.collector_address.clone())?);
+        messages.push(protocol_asset.into_msg(config.protocol_addr.clone())?);
     }
     // royalty
     if royalty_fee > Uint128::zero() {
@@ -646,9 +646,9 @@ pub fn admin_change_config(
     min_reserve_price: Uint128,
     max_royalty_fee: Decimal,
     duration: u64,
-    extension_duration: u64,
+    min_duration: u64,
     accepted_denom: Vec<String>,
-    collector_address: String,
+    protocol_addr: String,
 ) -> Result<Response, ContractError> {
     // check only owner
     only_owner(deps.as_ref(), &env, info)?;
@@ -659,9 +659,9 @@ pub fn admin_change_config(
     config.min_reserve_price = min_reserve_price;
     config.max_royalty_fee = max_royalty_fee;
     config.duration = duration;
-    config.extension_duration = extension_duration;
+    config.min_duration = min_duration;
     config.accepted_denom = accepted_denom;
-    config.collector_address = deps.api.addr_validate(&collector_address)?;
+    config.protocol_addr = deps.api.addr_validate(&protocol_addr)?;
 
     CONFIG.save(deps.storage, &config)?;
 

@@ -10,9 +10,9 @@ pub struct InstantiateMsg {
     pub min_reserve_price: Uint128,
     pub max_royalty_fee: Decimal,
     pub duration: u64,
-    pub extension_duration: u64,
+    pub min_duration: u64,
     pub accepted_denom: Vec<String>,
-    pub collector_address: String,
+    pub protocol_addr: String,
 }
 
 /// This is like Cw721HandleMsg but we add a Mint command for an owner
@@ -37,9 +37,9 @@ pub enum ExecuteMsg {
         min_reserve_price: Uint128,
         max_royalty_fee: Decimal,
         duration: u64,
-        extension_duration: u64,
+        min_duration: u64,
         accepted_denom: Vec<String>,
-        collector_address: String,
+        protocol_addr: String,
     },
     AdminCancelAuction {
         auction_id: Uint128,
@@ -184,9 +184,9 @@ pub struct ConfigResponse {
     pub min_reserve_price: Uint128,
     pub min_increment: Decimal,
     pub duration: u64,
-    pub extension_duration: u64,
+    pub min_duration: u64,
     pub accepted_denom: Vec<String>,
-    pub collector_address: String,
+    pub protocol_addr: String,
     pub max_royalty_fee: Decimal,
 }
 
@@ -214,7 +214,7 @@ pub struct AuctionResponse {
     pub token_id: String,
     pub seller: String,
     pub duration: u64,
-    pub extension_duration: u64,
+    pub min_duration: u64,
     pub denom: String,
     pub reserve_price: Uint128,
     pub end_time: u64,

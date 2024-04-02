@@ -20,11 +20,11 @@ const wallet = create_wallet(MNEMONIC);
       protocol_fee: "0.01",
       min_increment: "0.1",
       duration: 300,
-      extension_duration: 60,
+      min_duration: 60,
       accepted_denom: ["uluna"],
       min_reserve_price: "1000",
       max_royalty_fee: "0.2",
-    collector_address: wallet.key.accAddress,
+    protocol_addr: wallet.key.accAddress,
     }, 'kw-os');
     const auction_addr = response.contract_addr;
     console.log(auction_addr);
