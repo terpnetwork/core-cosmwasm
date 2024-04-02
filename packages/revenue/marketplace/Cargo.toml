@@ -1,7 +1,9 @@
 [package]
 name = "marketplace"
-version = "2.0.0"
+version     = { workspace = true }
 authors = ["0xplanet"]
+license = { workspace = true }
+description = "auction marketplace library."
 edition = "2018"
 
 exclude = [

@@ -24,9 +24,7 @@ license    = "Apache-2.0"
 
 [workspace.dependencies]
 terp-fair-burn = { path = "contracts/revenue/fair-burn", features = ["library"] }
-terp-residual-registry = { path = "contracts/revenue/residual-registry", features = [
-    "library",
-] }
+terp-residual-registry = { path = "contracts/revenue/residual-registry", features = ["library",] }
 
 terp721                    = { version = "0.1.0", path = "packages/nft/terp721", features = ["library"] }
 terp721-base               = { version = "0.1.0", path = "contracts/nft/collections/terp721-base", features = ["library"] }
@@ -52,18 +50,18 @@ factory-utils              = { version = "0.1.0", path = "packages/nft/factory-u
 minter-utils               = { version = "0.1.0", path = "packages/nft/minter-utils" }
 terp-sdk                   = { version = "0.1.0", path = "packages/utils/terp-sdk" }
 terp-fee                   = { version = "0.1.0", path = "packages/revenue/terp-fee" }
-marketplace                = { version = "2.0.0",  path = "packages/revenue/marketplace" }
+marketplace                = { version = "0.1.0",  path = "packages/revenue/marketplace" }
 
 
 cosmwasm-schema  = "1.5.3"
 cosmwasm-std     = "1.5.3"
 cosmwasm-storage = "1.3.1"
-cw-storage-macro = "1.1.0"
-cw-storage-plus  = "1.1.0"
-cw-controllers   = "1.1.0"
-cw2              = "1.1.0"
-cw4              = "1.1.0"
-cw4-group        = "1.1.0"
+cw-storage-macro = "1.2.0"
+cw-storage-plus  = "1.2.0"
+cw-controllers   = "1.1.2"
+cw2              = "1.1.2"
+cw4              = "1.1.2"
+cw4-group        = "1.1.2"
 cw721            = "0.18.0"
 cw721-base       = "0.18.0"
 cw-utils         = "1.0.3"
