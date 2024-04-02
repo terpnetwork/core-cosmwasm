@@ -3,7 +3,7 @@ use cosmwasm_std::{
     StdError, StdResult, Uint128,
 };
 use cw721::Cw721ReceiveMsg;
-use marketplace::auction::{Cw721HookMsg, ExecuteMsg, InstantiateMsg, MigrateMsg, QueryMsg};
+use terp_marketplace_utils::auction::{Cw721HookMsg, ExecuteMsg, InstantiateMsg, MigrateMsg, QueryMsg};
 
 use crate::auction::{
     admin_cancel_auction, admin_change_config, admin_pause, admin_resume, cancel_auction,

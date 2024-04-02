@@ -1,5 +1,5 @@
 [package]
-name = "marketplace"
+name = "terp-marketplace-utils"
 version     = { workspace = true }
 authors = ["0xplanet"]
 license = { workspace = true }

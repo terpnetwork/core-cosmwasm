@@ -4,7 +4,7 @@ use cosmwasm_std::{
 use cw721::{Cw721QueryMsg, OwnerOfResponse};
 use cw_storage_plus::Bound;
 use cw_utils::maybe_addr;
-use marketplace::auction::{
+use terp_marketplace_utils::auction::{
     AllRoyaltyFeeResponse, AllRoyaltyListResponse, AuctionListResponse, AuctionResponse,
     AuctionResponse as NftAuctionResponse, Bid, BidsCountResponse, BidHistoryByAuctionIdResponse,
     CalculatePriceResponse, ConfigResponse, Royalty, RoyaltyAdminResponse, RoyaltyFeeResponse,

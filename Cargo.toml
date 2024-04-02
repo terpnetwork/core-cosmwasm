@@ -50,7 +50,7 @@ factory-utils              = { version = "0.1.0", path = "packages/nft/factory-u
 minter-utils               = { version = "0.1.0", path = "packages/nft/minter-utils" }
 terp-sdk                   = { version = "0.1.0", path = "packages/utils/terp-sdk" }
 terp-fee                   = { version = "0.1.0", path = "packages/revenue/terp-fee" }
-marketplace                = { version = "0.1.0",  path = "packages/revenue/marketplace" }
+terp-marketplace-utils                = { version = "0.1.0",  path = "packages/revenue/marketplace" }
 
 
 cosmwasm-schema  = "1.5.3"

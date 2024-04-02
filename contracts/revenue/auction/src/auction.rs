@@ -3,7 +3,7 @@ use cosmwasm_std::{
      Response,  Uint128, WasmMsg, 
 };
 use cw721::Cw721ExecuteMsg;
-use marketplace::auction::{AuctionType, Bid, ExecuteMsg, Royalty};
+use terp_marketplace_utils::auction::{AuctionType, Bid, ExecuteMsg, Royalty};
 use terraswap::asset::{Asset, AssetInfo};
 
 use crate::error::ContractError;

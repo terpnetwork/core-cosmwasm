@@ -1,6 +1,6 @@
 use cosmwasm_schema::write_api;
 
-use marketplace::auction::{ExecuteMsg, InstantiateMsg, QueryMsg};
+use terp_marketplace_utils::auction::{ExecuteMsg, InstantiateMsg, QueryMsg};
 
 fn main() {
     write_api! {

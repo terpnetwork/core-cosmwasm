@@ -3,7 +3,7 @@ use cosmwasm_std::{
     to_json_binary, BankMsg, Coin, CosmosMsg, Decimal, DepsMut, Timestamp, Uint128, WasmMsg,
 };
 use cw721::{Cw721ExecuteMsg, Cw721ReceiveMsg};
-use marketplace::auction::{
+use terp_marketplace_utils::auction::{
     AllRoyaltyListResponse, AllRoyaltyFeeResponse, AuctionResponse, AuctionType,
     CalculatePriceResponse, ConfigResponse, Cw721HookMsg, ExecuteMsg, InstantiateMsg,
     RoyaltyAdminResponse, RoyaltyFeeResponse, RoyaltyResponse, StateResponse,
