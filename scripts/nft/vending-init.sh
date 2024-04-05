@@ -1,9 +1,11 @@
-FACTORY_CODE_ID=
-MINTER_CODE_ID=
+FACTORY_CODE_ID=90
+MINTER_CODE_ID=91
 MSG=$(cat <<EOF
 {
   "params": {
     "code_id": $MINTER_CODE_ID,
+    "allowed_terp721_code_ids": [83,68],
+    "frozen": false,
     "creation_fee": { "amount": "1000000000", "denom": "uthiolx" },
     "min_mint_price": { "amount": "50000000", "denom": "uthiolx" },
     "mint_fee_bps": 1000,
@@ -21,9 +23,9 @@ MSG=$(cat <<EOF
 EOF
 )
 
-terpd tx wasm instantiate $FACTORY_CODE_ID  "$MSG"  --label "vending factory" --no-admin \
-  --from mainnet-spot --gas-prices 0.025uthiol --gas-adjustment 1.7 --gas auto \
-  --chain-id 90u-2 --node  \
-  -b block -o json | jq .
+terpd tx wasm instantiate $FACTORY_CODE_ID "$MSG"  --label "vending factory" --no-admin \
+  --from test1 --gas-prices 0.025uthiolx --gas-adjustment 1.7 --gas auto \
+  --chain-id 90u-4 \
+  -b block -o json  --generate-only > unsignedTx.json
 
 

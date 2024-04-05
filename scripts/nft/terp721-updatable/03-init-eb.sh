@@ -2,14 +2,14 @@
 # terpd config chain-id $CHAIN_ID
 # terpd config output json
 
-KEY=$(terpd keys show $ADMIN | jq -r .name)
-EB_CODE_ID=1980
+
+EB_CODE_ID=93
 
 TIME=$(date -v+30S +%s)
 ENDTIME=$(date -v+3000S +%s)
 MSG=$(cat <<EOF
 {
-  "members": ["terp1cfudsnwnfezvqjnlhtxhssvzneykysc8ktnqje"],
+  "members": ["terp1tyl97ac3s7sec4jwznk0s7n3tlwf3matfmkape"],
   "start_time": "$(echo $TIME)000000000",
   "end_time": "$(echo $ENDTIME)000000000",
   "mint_price": {
@@ -27,5 +27,5 @@ echo $MSG
 
 
 terpd tx wasm instantiate $EB_CODE_ID "$MSG" --label "ZeroMintFeeEarlybird" --amount 100000000uthiolx \
-  --no-admin --gas-prices 0.025uthiolx --gas 500000 --gas-adjustment 1.9 \
-  --from $KEY -y -b block -o json | jq .
+  --no-admin --gas-prices 0.05uthiolx --gas auto --gas-adjustment 1.9 \
+  --from test1 -y -b sync -o json | jq .

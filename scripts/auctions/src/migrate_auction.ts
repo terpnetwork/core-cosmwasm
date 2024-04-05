@@ -3,7 +3,7 @@ import {create_wallet, init, query, upload, transfer, execute, migrate} from './
 require('dotenv').config()
 const { MNEMONIC, AUCTION_ADDR } = process.env
 
-const wallet = create_wallet(MEMONIC);
+const wallet = create_wallet(MNEMONIC);
 
 (async() => {
     // upload code

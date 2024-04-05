@@ -3,8 +3,8 @@
 # terpd config output json
 
 KEY=$(terpd keys show $ADMIN | jq -r .name)
-FACTORY_CODE_ID=1981
-MINTER_CODE_ID=1982
+FACTORY_CODE_ID=
+MINTER_CODE_ID=
 
 MSG=$(cat <<EOF
 {
@@ -32,4 +32,4 @@ echo $MSG
 
 terpd tx wasm instantiate $FACTORY_CODE_ID "$MSG" --label "Factory" \
   --no-admin --gas-prices 0.025uthiolx --gas 500000 --gas-adjustment 1.9 \
-  --from $KEY -y -b block -o json | jq .
+  --from $KEY -y -b block -o json   --generate-only > unsignedTx.json

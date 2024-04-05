@@ -10,12 +10,12 @@ BUILDER="cosmwasm/workspace-optimizer:0.12.13"
 HASH="bf1497f4303d20c1db5f1af2ccec7b367e150c84c5e86f6a2798a1c4cc0d52c9"
 
 FROM=""
-DEPOSIT="10000000000uterp"
+DEPOSIT="1uthiolx"
 
 RUN_AS="hot-wallet"
 ANY_OF_ADDRS=""
 
-CHAIN_ID="90u-2"
+CHAIN_ID="90u-4"
 NODE=""
 
 terpd tx gov submit-proposal wasm-store "$CONTRACT" \
