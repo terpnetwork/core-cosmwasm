@@ -1,5 +1,14 @@
-for d in ./*.wasm; do
+for d in ./artifacts/*.wasm; do
     echo $d;
-    terpd tx wasm store $d --from test --gas-prices auto --gas-adjustment 1.7 --gas auto --chain-id 90u-4 --node  -b block --yes -o json | jq '.logs' | grep -A 1 code_id
+    response_command="terpd tx wasm store $d --from test1 --gas-prices 0.05uthiolx --gas-adjustment 1.7 --gas auto --chain-id 90u-4 -b async --yes -o json";
+    response=$(eval $response_command);
+    if [ -n "$response" ]; then
+        txhash=$(echo "$response" | jq -r '.txhash')
+        echo "Using txhash: $txhash"
+        sleep 6;
+        terpd q tx $txhash | sed -n 's/.*"key":"code_id","value":"\([^"]*\)".*/\1/p'        
+    else
+        echo "Error: Empty response"
+    fi
     echo "-----------------";
 done

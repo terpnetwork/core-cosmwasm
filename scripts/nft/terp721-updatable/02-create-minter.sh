@@ -1,6 +1,6 @@
 KEY=$(terpd keys show $ADMIN | jq -r .name)
-FACTORY=
-TERP721_CODE_ID=
+FACTORY=terp14kq48e55k8sdpu4tv5dpjshsk737am7mjf7z5k8d7h26vxw96ensta0nqx
+TERP721_CODE_ID=128
 
 # init msg
 # VendingMinterInitMsgExtension {
@@ -37,20 +37,20 @@ MSG=$(cat <<EOF
 {
     "create_minter": {
         "init_msg": {
-            "base_token_uri": "ipfs://bafybeiey2heysue3px2tgc523cmjbfjlox5zfzzan5syzdooikdvimtxwq",
+            "base_token_uri": "ipfs://bafybeic3tpnekc44dvapiv3readanraixczuvvpeo7clptt3e4yjffzjzy/IMG_3756.JPG",
             "start_time": "$(echo $TIME)000000000",
             "num_tokens": 1000,
-            "mint_price": { "amount": "50000000", "denom": "uthiolx" },
+            "mint_price": { "amount": "100", "denom": "uterpx" },
             "per_address_limit": 30
         },
         "collection_params": {
             "code_id": $TERP721_CODE_ID,
-            "name": "Test Collection yubo",
-            "symbol": "YUBO",
+            "name": "In_Da_Game",
+            "symbol": "EASP0RTS",
             "info": {
                 "creator": "$ADMIN",
-                "description": "Test Collection yubo",
-                "image": "ipfs://bafybeiavall5udkxkdtdm4djezoxrmfc6o5fn2ug3ymrlvibvwmwydgrkm/1.jpg"
+                "description": "Test Collection",
+                "image": "ipfs://bafybeic3tpnekc44dvapiv3readanraixczuvvpeo7clptt3e4yjffzjzy/IMG_3756.JPG"
             }
         }
     }
@@ -59,7 +59,21 @@ EOF
 )
 
 echo $MSG
+response_command='terpd tx wasm execute $FACTORY "$MSG" --amount 10uterpx --gas-prices 0.025uthiolx --gas auto --gas-adjustment 1.9 --from test1 -b block -o json';
+response=$(eval $response_command);
+echo $response
 
-terpd tx wasm execute $FACTORY "$MSG" --amount 5000000000uthiolx \
---gas-prices 0.025uthiolx --gas auto --gas-adjustment 1.9 \
---from $KEY -y -b block -o json | jq .
+
+ if [ -n "$response" ]; then
+    txhash=$(echo "$response" | jq -r '.txhash')
+    echo 'waiting for tx to process'
+    sleep 6;
+    tx_response=$(terpd q tx $txhash -o json)
+
+    echo $tx_response;
+
+    # contract_address=$(echo "$tx_response" | jq -r '.logs[].events[] | select(.type == "instantiate") | .attributes[] | select(.key == "_contract_address") | .value')
+    #     echo "Contract Address: $contract_address"
+    else
+        echo "Error: Empty response"
+    fi

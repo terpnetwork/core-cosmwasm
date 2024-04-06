@@ -1,5 +1,6 @@
-FACTORY_CODE_ID=90
-MINTER_CODE_ID=91
+FACTORY_CODE_ID=117
+MINTER_CODE_ID=118
+
 MSG=$(cat <<EOF
 {
   "params": {
@@ -19,13 +20,22 @@ MSG=$(cat <<EOF
     }
   }
 }
-
 EOF
 )
 
-terpd tx wasm instantiate $FACTORY_CODE_ID "$MSG"  --label "vending factory" --no-admin \
-  --from test1 --gas-prices 0.025uthiolx --gas-adjustment 1.7 --gas auto \
-  --chain-id 90u-4 \
-  -b block -o json  --generate-only > unsignedTx.json
+response_command='terpd tx wasm instantiate $FACTORY_CODE_ID "$MSG"  --label="vendingfactory" --no-admin --from test1 --gas-prices 0.05uthiolx --gas-adjustment 1.7 --gas auto --chain-id 90u-4 -b sync -o json  --yes -o json';
+response=$(eval $response_command);
+echo $response;
 
 
+ if [ -n "$response" ]; then
+    txhash=$(echo "$response" | jq -r '.txhash')
+    echo 'waiting for tx to process'
+    sleep 6;
+    tx_response=$(terpd q tx $txhash -o json)
+
+    contract_address=$(echo "$tx_response" | jq -r '.logs[].events[] | select(.type == "instantiate") | .attributes[] | select(.key == "_contract_address") | .value')
+        echo "Contract Address: $contract_address"
+    else
+        echo "Error: Empty response"
+    fi
