@@ -4,13 +4,8 @@ mod route;
 
 
 pub const NATIVE_DENOM: &str = "uterp";
-
-pub const NATIVE_BOND_DENOM: &str = "uterp";
-pub const NATIVE_FEE_DENOM: &str = "uthiol";
-
 pub const TEST_BOND_DENOM: &str = "uterpx";
 pub const TEST_FEE_DENOM: &str = "uthiolx";
-
 pub const GENESIS_MINT_START_TIME: u64 = 1647032400000000000;
 
 
@@ -34,10 +29,10 @@ pub use route::TerpRoute;
 // extern "C" fn requires_terpnetwork() {}
 
 pub fn terps(amount: impl Into<u128>) -> Vec<Coin> {
-    coins(amount.into(), NATIVE_BOND_DENOM)
+    coins(amount.into(), NATIVE_DENOM)
 }
 pub fn thiols(amount: impl Into<u128>) -> Vec<Coin> {
-    coins(amount.into(), NATIVE_FEE_DENOM)
+    coins(amount.into(), NATIVE_DENOM)
 }
 
 pub fn test_terps(amount: impl Into<u128>) -> Vec<Coin> {
@@ -48,19 +43,19 @@ pub fn test_thiols(amount: impl Into<u128>) -> Vec<Coin> {
 }
 
 pub fn terp(amount: impl Into<u128>) -> Coin {
-    coin(amount.into(), NATIVE_BOND_DENOM)
+    coin(amount.into(), NATIVE_DENOM)
 }
 
 pub fn thiol(amount: impl Into<u128>) -> Coin {
-    coin(amount.into(), NATIVE_FEE_DENOM)
+    coin(amount.into(), NATIVE_DENOM)
 }
 
 pub fn test_terp(amount: impl Into<u128>) -> Coin {
-    coin(amount.into(), NATIVE_BOND_DENOM)
+    coin(amount.into(), NATIVE_DENOM)
 }
 
 pub fn test_thiol(amount: impl Into<u128>) -> Coin {
-    coin(amount.into(), NATIVE_FEE_DENOM)
+    coin(amount.into(), NATIVE_DENOM)
 }
 
 pub fn send_terps_msg(to_address: &Addr, amount: impl Into<u128>) -> BankMsg {

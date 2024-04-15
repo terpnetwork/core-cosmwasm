@@ -40,7 +40,7 @@ MSG=$(cat <<EOF
             "base_token_uri": "ipfs://bafybeic3tpnekc44dvapiv3readanraixczuvvpeo7clptt3e4yjffzjzy/IMG_3756.JPG",
             "start_time": "$(echo $TIME)000000000",
             "num_tokens": 1000,
-            "mint_price": { "amount": "100", "denom": "uterpx" },
+            "mint_price": { "amount": "100", "denom": "uterp" },
             "per_address_limit": 30
         },
         "collection_params": {
@@ -59,7 +59,7 @@ EOF
 )
 
 echo $MSG
-response_command='terpd tx wasm execute $FACTORY "$MSG" --amount 10uterpx --gas-prices 0.025uthiolx --gas auto --gas-adjustment 1.9 --from test1 -b block -o json';
+response_command='terpd tx wasm execute $FACTORY "$MSG" --amount 10uterp --gas-prices 0.025uterp --gas auto --gas-adjustment 1.9 --from test1 -b block -o json';
 response=$(eval $response_command);
 echo $response
 

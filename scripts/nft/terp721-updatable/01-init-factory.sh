@@ -12,16 +12,16 @@ MSG=$(cat <<EOF
     "code_id": $MINTER_CODE_ID,
     "allowed_terp721_code_ids": [128,68],
     "frozen": false,
-    "creation_fee": {"amount": "10", "denom": "uterpx"},
-    "min_mint_price": {"amount": "0", "denom": "uterpx"},
+    "creation_fee": {"amount": "10", "denom": "uterp"},
+    "min_mint_price": {"amount": "0", "denom": "uterp"},
     "mint_fee_bps": 1000,
     "max_trading_offset_secs": 604800,
     "extension": {
         "max_token_limit": 10000,
         "max_per_address_limit": 50,
-        "airdrop_mint_price": { "denom": "uterpx", "amount": "0" },
+        "airdrop_mint_price": { "denom": "uterp", "amount": "0" },
         "airdrop_mint_fee_bps": 10000,
-        "shuffle_fee": { "amount": "50", "denom": "uterpx" }
+        "shuffle_fee": { "amount": "50", "denom": "uterp" }
     }
   }
 }
@@ -29,7 +29,7 @@ EOF
 )
 # echo $MSG
 
-response_command='terpd tx wasm i $FACTORY_CODE_ID "$MSG" --label "Factory" --no-admin --gas-prices 0.05uthiolx --gas auto --gas-adjustment 1.9 --from test1 -y -b sync -o json --chain-id 90u-4';
+response_command='terpd tx wasm i $FACTORY_CODE_ID "$MSG" --label "Factory" --no-admin --gas-prices 0.05uterp --gas auto --gas-adjustment 1.9 --from wtf -y -b sync -o json ';
 response=$(eval $response_command);
 # echo $response
 

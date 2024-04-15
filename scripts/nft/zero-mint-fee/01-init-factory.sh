@@ -3,25 +3,25 @@
 # terpd config output json
 
 KEY=$(terpd keys show $ADMIN | jq -r .name)
-FACTORY_CODE_ID=
-MINTER_CODE_ID=
+FACTORY_CODE_ID=121
+MINTER_CODE_ID=122
 
 MSG=$(cat <<EOF
 {
   "params": {
     "code_id": $MINTER_CODE_ID,
-    "allowed_terp721_code_ids": [1979],
+    "allowed_terp721_code_ids": [68,128],
     "frozen": false,
-    "creation_fee": {"amount": "5000000000", "denom": "uthiolx"},
-    "min_mint_price": {"amount": "0", "denom": "uthiolx"},
+    "creation_fee": {"amount": "5000000", "denom": "uterp"},
+    "min_mint_price": {"amount": "0", "denom": "uterp"},
     "mint_fee_bps": 1000,
     "max_trading_offset_secs": 604800,
     "extension": {
         "max_token_limit": 10000,
         "max_per_address_limit": 50,
-        "airdrop_mint_price": { "denom": "uthiolx", "amount": "0" },
+        "airdrop_mint_price": { "denom": "uterp", "amount": "0" },
         "airdrop_mint_fee_bps": 10000,
-        "shuffle_fee": { "amount": "500000000", "denom": "uthiolx" }
+        "shuffle_fee": { "amount": "500000000", "denom": "uterp" }
     }
   }
 }

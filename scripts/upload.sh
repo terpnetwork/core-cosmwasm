@@ -1,6 +1,6 @@
 for d in ./artifacts/*.wasm; do
     echo $d;
-    response_command="terpd tx wasm store $d --from test1 --gas-prices 0.05uthiolx --gas-adjustment 1.7 --gas auto --chain-id 90u-4 -b async --yes -o json";
+    response_command="terpd tx wasm store $d --from test1 --gas-prices 0.05uthiol --gas-adjustment 1.7 --gas auto --chain-id 120u-1 -b async --yes -o json";
     response=$(eval $response_command);
     if [ -n "$response" ]; then
         txhash=$(echo "$response" | jq -r '.txhash')

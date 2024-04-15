@@ -1,22 +1,22 @@
-FACTORY_CODE_ID=117
-MINTER_CODE_ID=118
+FACTORY_CODE_ID=135
+MINTER_CODE_ID=136
 
 MSG=$(cat <<EOF
 {
   "params": {
     "code_id": $MINTER_CODE_ID,
-    "allowed_terp721_code_ids": [83,68],
+    "allowed_terp721_code_ids": [68,128],
     "frozen": false,
-    "creation_fee": { "amount": "1000000000", "denom": "uthiolx" },
-    "min_mint_price": { "amount": "50000000", "denom": "uthiolx" },
+    "creation_fee": { "amount": "1000000000", "denom": "uterp" },
+    "min_mint_price": { "amount": "50000000", "denom": "uterp" },
     "mint_fee_bps": 1000,
     "max_trading_offset_secs": 1209600,
     "extension": {
       "max_token_limit": 10000,
       "max_per_address_limit": 50,
-      "airdrop_mint_price": { "amount": "0", "denom": "uthiolx" },
+      "airdrop_mint_price": { "amount": "0", "denom": "uterp" },
       "airdrop_mint_fee_bps": 0,
-      "shuffle_fee": { "amount": "100000000", "denom": "uthiolx" }
+      "shuffle_fee": { "amount": "100000000", "denom": "uterp" }
     }
   }
 }
@@ -39,3 +39,4 @@ echo $response;
     else
         echo "Error: Empty response"
     fi
+    
